@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <?xml-stylesheet type="text/xsl" href="/global/feed/rss.xslt" ?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:googleplay="http://www.google.com/schemas/play-podcasts/1.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:media="http://search.yahoo.com/mrss/" xmlns:podaccess="https://access.acast.com/schema/1.0/" xmlns:acast="https://schema.acast.com/1.0/" xmlns:podcast="https://podcastindex.org/namespace/1.0">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:googleplay="http://www.google.com/schemas/play-podcasts/1.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:media="http://search.yahoo.com/mrss/" xmlns:podaccess="https://access.acast.com/schema/1.0/" xmlns:acast="https://schema.acast.com/1.0/">
     <channel>
 		<ttl>60</ttl>
 		<generator>acast.com</generator>
@@ -34,99 +34,99 @@
 			</image>
 			<itunes:new-feed-url>https://feeds.acast.com/public/shows/593eded1acfa040562f3480b</itunes:new-feed-url>
 		<item>
-			<title>Episode 008</title>
-			<itunes:title>Episode 008</itunes:title>
-			<pubDate>Fri, 27 Feb 2026 15:00:00 GMT</pubDate>
-			<itunes:duration>59:36</itunes:duration>
-			<enclosure url="https://sphinx.acast.com/p/open/s/593eded1acfa040562f3480b/e/69a078b0eebc4a99c6010396/media.mp3" length="88292043" type="audio/mpeg"/>
-			<guid isPermaLink="false">69a078b0eebc4a99c6010396</guid>
+			<title>Episode 014</title>
+			<itunes:title>Episode 014</itunes:title>
+			<pubDate>Fri, 10 Apr 2026 14:00:00 GMT</pubDate>
+			<itunes:duration>1:00:31</itunes:duration>
+			<enclosure url="https://sphinx.acast.com/p/open/s/593eded1acfa040562f3480b/e/69d392af1d7024f1a78c7502/media.mp3" length="58106357" type="audio/mpeg"/>
+			<guid isPermaLink="false">69d392af1d7024f1a78c7502</guid>
 			<itunes:explicit>false</itunes:explicit>
-			<link>https://shows.acast.com/clublife-by-tiesto/episodes/episode-008</link>
-			<acast:episodeId>69a078b0eebc4a99c6010396</acast:episodeId>
+			<link>https://shows.acast.com/clublife-by-tiesto/episodes/episode-014</link>
+			<acast:episodeId>69d392af1d7024f1a78c7502</acast:episodeId>
 			<acast:showId>593eded1acfa040562f3480b</acast:showId>
-			<acast:episodeUrl>episode-008</acast:episodeUrl>
-			<acast:settings><![CDATA[FYjHyZbXWHZ7gmX8Pp1rmbKbhgrQiwYShz70Q9/ffXZMTtedvdcRQbP4eiLMjXzCKLPjEYLpGj+NMVKa+5C8pL4u/EOj1Vw4h5MMJYp0lCcFAe0fnxBJy/1ju4Qxy1fh8gO4DvlGA40yms2g0/hOkcrfHIopjTygHFqGwwOPKFIai4SuTvs86Lx3UYCyl6ZsNcnLsd5hEkvO2SZnlJ175b1WhJXImae5kJkSQC3lFzIsjGNB4jw6P/NyC0ZdvHFPTxcnOy7yo1xO1STbz01zoRbCA0Z4ee0SNh+gbQwImv301IR7fIxLuSa3tmdaCMG1]]></acast:settings>
-			<itunes:subtitle>PRISMATIC by Tiësto Episode 008</itunes:subtitle>
+			<acast:episodeUrl>episode-014</acast:episodeUrl>
+			<acast:settings><![CDATA[FYjHyZbXWHZ7gmX8Pp1rmbKbhgrQiwYShz70Q9/ffXZMTtedvdcRQbP4eiLMjXzCKLPjEYLpGj+NMVKa+5C8pL4u/EOj1Vw4h5MMJYp0lCcFAe0fnxBJy/1ju4Qxy1fh8gO4DvlGA40yms2g0/hOkcrfHIopjTygHFqGwwOPKFIai4SuTvs86Lx3UYCyl6ZsNcnLsd5hEkvO2SZnlJ175b1WhJXImae5kJkSQC3lFzLjwKRk25RvUMnU7Th07idwiQYFeF1+4JDEg3bG7UfUL0r46LXf3TFcHsJB1qPkkFksVMga3jMJfr8vVsho5H+c]]></acast:settings>
+			<itunes:subtitle>PRISMATIC by Tiësto Episode 014</itunes:subtitle>
 			<itunes:episodeType>full</itunes:episodeType>
-			<itunes:image href="https://assets.pippa.io/shows/593eded1acfa040562f3480b/1772124314857-3c20535c-844b-4efb-8e72-bc071eb8d2ab.jpeg"/>
-			<description><![CDATA[PRISMATIC by Tiësto Episode 008<hr><p style='color:grey; font-size:0.75em;'> Hosted on Acast. See <a style='color:grey;' target='_blank' rel='noopener noreferrer' href='https://acast.com/privacy'>acast.com/privacy</a> for more information.</p>]]></description>
-			<itunes:summary><![CDATA[PRISMATIC by Tiësto Episode 008<hr><p style='color:grey; font-size:0.75em;'> Hosted on Acast. See <a style='color:grey;' target='_blank' rel='noopener noreferrer' href='https://acast.com/privacy'>acast.com/privacy</a> for more information.</p>]]></itunes:summary>
+			<itunes:image href="https://assets.pippa.io/shows/593eded1acfa040562f3480b/1775473279725-fc0da318-f4c3-429e-9cda-4bbcd60f5cc4.jpeg"/>
+			<description><![CDATA[PRISMATIC by Tiësto Episode 014<hr><p style='color:grey; font-size:0.75em;'> Hosted on Acast. See <a style='color:grey;' target='_blank' rel='noopener noreferrer' href='https://acast.com/privacy'>acast.com/privacy</a> for more information.</p>]]></description>
+			<itunes:summary><![CDATA[PRISMATIC by Tiësto Episode 014<hr><p style='color:grey; font-size:0.75em;'> Hosted on Acast. See <a style='color:grey;' target='_blank' rel='noopener noreferrer' href='https://acast.com/privacy'>acast.com/privacy</a> for more information.</p>]]></itunes:summary>
 		</item>
 		<item>
-			<title>Episode 007</title>
-			<itunes:title>Episode 007</itunes:title>
-			<pubDate>Fri, 20 Feb 2026 15:00:00 GMT</pubDate>
-			<itunes:duration>59:59</itunes:duration>
-			<enclosure url="https://sphinx.acast.com/p/open/s/593eded1acfa040562f3480b/e/6996e1624a6b6137bf728312/media.mp3" length="88260474" type="audio/mpeg"/>
-			<guid isPermaLink="false">6996e1624a6b6137bf728312</guid>
+			<title>Episode 013</title>
+			<itunes:title>Episode 013</itunes:title>
+			<pubDate>Fri, 03 Apr 2026 14:00:00 GMT</pubDate>
+			<itunes:duration>59:58</itunes:duration>
+			<enclosure url="https://sphinx.acast.com/p/open/s/593eded1acfa040562f3480b/e/69cd35ee057b5949954f956c/media.mp3" length="57581818" type="audio/mpeg"/>
+			<guid isPermaLink="false">69cd35ee057b5949954f956c</guid>
 			<itunes:explicit>false</itunes:explicit>
-			<link>https://shows.acast.com/clublife-by-tiesto/episodes/episode-007</link>
-			<acast:episodeId>6996e1624a6b6137bf728312</acast:episodeId>
+			<link>https://shows.acast.com/clublife-by-tiesto/episodes/episode-013</link>
+			<acast:episodeId>69cd35ee057b5949954f956c</acast:episodeId>
 			<acast:showId>593eded1acfa040562f3480b</acast:showId>
-			<acast:episodeUrl>episode-007</acast:episodeUrl>
-			<acast:settings><![CDATA[FYjHyZbXWHZ7gmX8Pp1rmbKbhgrQiwYShz70Q9/ffXZMTtedvdcRQbP4eiLMjXzCKLPjEYLpGj+NMVKa+5C8pL4u/EOj1Vw4h5MMJYp0lCcFAe0fnxBJy/1ju4Qxy1fh8gO4DvlGA40yms2g0/hOkcrfHIopjTygHFqGwwOPKFIai4SuTvs86Lx3UYCyl6ZsNcnLsd5hEkvO2SZnlJ175b1WhJXImae5kJkSQC3lFzL8v/+lQe6n4unPHWJHI3nTNspf6YH3BoqmcSCjOePZnFD5Nh7WiNd8znNtXpYUPrPYe0KM0BYaAr7j/LrM1qBA]]></acast:settings>
-			<itunes:subtitle>PRISMATIC by Tiësto Episode 007</itunes:subtitle>
+			<acast:episodeUrl>episode-013</acast:episodeUrl>
+			<acast:settings><![CDATA[FYjHyZbXWHZ7gmX8Pp1rmbKbhgrQiwYShz70Q9/ffXZMTtedvdcRQbP4eiLMjXzCKLPjEYLpGj+NMVKa+5C8pL4u/EOj1Vw4h5MMJYp0lCcFAe0fnxBJy/1ju4Qxy1fh8gO4DvlGA40yms2g0/hOkcrfHIopjTygHFqGwwOPKFIai4SuTvs86Lx3UYCyl6ZsNcnLsd5hEkvO2SZnlJ175b1WhJXImae5kJkSQC3lFzIOOHgybXTUu/fLCD6lLJc+F0mYc/t1tbVjSRLHsUmatR05fL/gpkGjKYseF3BACn4dGEOWcIegQD/qEf6yOv5N]]></acast:settings>
+			<itunes:subtitle>PRISMATIC by Tiësto Episode 013</itunes:subtitle>
 			<itunes:episodeType>full</itunes:episodeType>
-			<itunes:image href="https://assets.pippa.io/shows/593eded1acfa040562f3480b/1771495722243-cdc09c88-bf32-4344-9048-adc9e2586cef.jpeg"/>
-			<description><![CDATA[PRISMATIC by Tiësto Episode 007<hr><p style='color:grey; font-size:0.75em;'> Hosted on Acast. See <a style='color:grey;' target='_blank' rel='noopener noreferrer' href='https://acast.com/privacy'>acast.com/privacy</a> for more information.</p>]]></description>
-			<itunes:summary><![CDATA[PRISMATIC by Tiësto Episode 007<hr><p style='color:grey; font-size:0.75em;'> Hosted on Acast. See <a style='color:grey;' target='_blank' rel='noopener noreferrer' href='https://acast.com/privacy'>acast.com/privacy</a> for more information.</p>]]></itunes:summary>
+			<itunes:image href="https://assets.pippa.io/shows/593eded1acfa040562f3480b/1775056319549-89accca5-76ed-4c07-bf9e-a312a6b2524f.jpeg"/>
+			<description><![CDATA[PRISMATIC by Tiësto Episode 013<hr><p style='color:grey; font-size:0.75em;'> Hosted on Acast. See <a style='color:grey;' target='_blank' rel='noopener noreferrer' href='https://acast.com/privacy'>acast.com/privacy</a> for more information.</p>]]></description>
+			<itunes:summary><![CDATA[PRISMATIC by Tiësto Episode 013<hr><p style='color:grey; font-size:0.75em;'> Hosted on Acast. See <a style='color:grey;' target='_blank' rel='noopener noreferrer' href='https://acast.com/privacy'>acast.com/privacy</a> for more information.</p>]]></itunes:summary>
 		</item>
 		<item>
-			<title>Episode 006</title>
-			<itunes:title>Episode 006</itunes:title>
-			<pubDate>Fri, 13 Feb 2026 15:00:00 GMT</pubDate>
-			<itunes:duration>59:54</itunes:duration>
-			<enclosure url="https://sphinx.acast.com/p/open/s/593eded1acfa040562f3480b/e/698ca5395a0d566e5b2c621d/media.mp3" length="87805443" type="audio/mpeg"/>
-			<guid isPermaLink="false">698ca5395a0d566e5b2c621d</guid>
+			<title>Episode 012</title>
+			<itunes:title>Episode 012</itunes:title>
+			<pubDate>Fri, 27 Mar 2026 15:00:00 GMT</pubDate>
+			<itunes:duration>1:00:11</itunes:duration>
+			<enclosure url="https://sphinx.acast.com/p/open/s/593eded1acfa040562f3480b/e/69c2a1c41a160b44db072703/media.mp3" length="57776587" type="audio/mpeg"/>
+			<guid isPermaLink="false">69c2a1c41a160b44db072703</guid>
 			<itunes:explicit>false</itunes:explicit>
-			<link>https://shows.acast.com/clublife-by-tiesto/episodes/episode-006</link>
-			<acast:episodeId>698ca5395a0d566e5b2c621d</acast:episodeId>
+			<link>https://shows.acast.com/clublife-by-tiesto/episodes/episode-012</link>
+			<acast:episodeId>69c2a1c41a160b44db072703</acast:episodeId>
 			<acast:showId>593eded1acfa040562f3480b</acast:showId>
-			<acast:episodeUrl>episode-006</acast:episodeUrl>
-			<acast:settings><![CDATA[FYjHyZbXWHZ7gmX8Pp1rmbKbhgrQiwYShz70Q9/ffXZMTtedvdcRQbP4eiLMjXzCKLPjEYLpGj+NMVKa+5C8pL4u/EOj1Vw4h5MMJYp0lCcFAe0fnxBJy/1ju4Qxy1fh8gO4DvlGA40yms2g0/hOkcrfHIopjTygHFqGwwOPKFIai4SuTvs86Lx3UYCyl6ZsNcnLsd5hEkvO2SZnlJ175b1WhJXImae5kJkSQC3lFzKqOydab9jgNb7OF3MBDYJLcnn2PH8qbp4wzxaUEKmfXIDERtGAGtbtG1Rt+KvxSfx74XzD+KFmQxNJ2T1XUAp1]]></acast:settings>
-			<itunes:subtitle>PRISMATIC by Tiësto Episode 006</itunes:subtitle>
+			<acast:episodeUrl>episode-012</acast:episodeUrl>
+			<acast:settings><![CDATA[FYjHyZbXWHZ7gmX8Pp1rmbKbhgrQiwYShz70Q9/ffXZMTtedvdcRQbP4eiLMjXzCKLPjEYLpGj+NMVKa+5C8pL4u/EOj1Vw4h5MMJYp0lCcFAe0fnxBJy/1ju4Qxy1fh8gO4DvlGA40yms2g0/hOkcrfHIopjTygHFqGwwOPKFIai4SuTvs86Lx3UYCyl6ZsNcnLsd5hEkvO2SZnlJ175b1WhJXImae5kJkSQC3lFzI490T9psuBOcuPMvY6H4YqtLSP9F9nemycc/lDczUVqw40DHHYieilTGuyovqIVS6iz0SHuLEtuqsP346xpHgd]]></acast:settings>
+			<itunes:subtitle>PRISMATIC by Tiësto Episode 012</itunes:subtitle>
 			<itunes:episodeType>full</itunes:episodeType>
-			<itunes:image href="https://assets.pippa.io/shows/593eded1acfa040562f3480b/1770824957337-3ea18d10-fc6a-44dc-a77b-ec737965b488.jpeg"/>
-			<description><![CDATA[PRISMATIC by Tiësto Episode 006<hr><p style='color:grey; font-size:0.75em;'> Hosted on Acast. See <a style='color:grey;' target='_blank' rel='noopener noreferrer' href='https://acast.com/privacy'>acast.com/privacy</a> for more information.</p>]]></description>
-			<itunes:summary><![CDATA[PRISMATIC by Tiësto Episode 006<hr><p style='color:grey; font-size:0.75em;'> Hosted on Acast. See <a style='color:grey;' target='_blank' rel='noopener noreferrer' href='https://acast.com/privacy'>acast.com/privacy</a> for more information.</p>]]></itunes:summary>
+			<itunes:image href="https://assets.pippa.io/shows/593eded1acfa040562f3480b/1774362970404-f96da923-2f6f-4d82-9471-2500c26e33ea.jpeg"/>
+			<description><![CDATA[PRISMATIC by Tiësto Episode 012<hr><p style='color:grey; font-size:0.75em;'> Hosted on Acast. See <a style='color:grey;' target='_blank' rel='noopener noreferrer' href='https://acast.com/privacy'>acast.com/privacy</a> for more information.</p>]]></description>
+			<itunes:summary><![CDATA[PRISMATIC by Tiësto Episode 012<hr><p style='color:grey; font-size:0.75em;'> Hosted on Acast. See <a style='color:grey;' target='_blank' rel='noopener noreferrer' href='https://acast.com/privacy'>acast.com/privacy</a> for more information.</p>]]></itunes:summary>
 		</item>
 		<item>
-			<title>Episode 005</title>
-			<itunes:title>Episode 005</itunes:title>
-			<pubDate>Fri, 06 Feb 2026 15:00:00 GMT</pubDate>
-			<itunes:duration>1:00:06</itunes:duration>
-			<enclosure url="https://sphinx.acast.com/p/open/s/593eded1acfa040562f3480b/e/697e078956431a2c0ffabaef/media.mp3" length="88185434" type="audio/mpeg"/>
-			<guid isPermaLink="false">697e078956431a2c0ffabaef</guid>
+			<title>Episode 011</title>
+			<itunes:title>Episode 011</itunes:title>
+			<pubDate>Fri, 20 Mar 2026 15:00:00 GMT</pubDate>
+			<itunes:duration>59:50</itunes:duration>
+			<enclosure url="https://sphinx.acast.com/p/open/s/593eded1acfa040562f3480b/e/69bac53d9f868752e5c64005/media.mp3" length="88057914" type="audio/mpeg"/>
+			<guid isPermaLink="false">69bac53d9f868752e5c64005</guid>
 			<itunes:explicit>false</itunes:explicit>
-			<link>https://shows.acast.com/clublife-by-tiesto/episodes/episode-005</link>
-			<acast:episodeId>697e078956431a2c0ffabaef</acast:episodeId>
+			<link>https://shows.acast.com/clublife-by-tiesto/episodes/episode-011</link>
+			<acast:episodeId>69bac53d9f868752e5c64005</acast:episodeId>
 			<acast:showId>593eded1acfa040562f3480b</acast:showId>
-			<acast:episodeUrl>episode-005</acast:episodeUrl>
-			<acast:settings><![CDATA[FYjHyZbXWHZ7gmX8Pp1rmbKbhgrQiwYShz70Q9/ffXZMTtedvdcRQbP4eiLMjXzCKLPjEYLpGj+NMVKa+5C8pL4u/EOj1Vw4h5MMJYp0lCcFAe0fnxBJy/1ju4Qxy1fh8gO4DvlGA40yms2g0/hOkcrfHIopjTygHFqGwwOPKFIai4SuTvs86Lx3UYCyl6ZsNcnLsd5hEkvO2SZnlJ175b1WhJXImae5kJkSQC3lFzKAwFocO1SktXxkMxlUg5c69lmk1cVV7F/FcBLXJhUbf6/Lhlitf/p6iA8T1fXyX+/UD/b2vy1cmmmpd4zc6REI]]></acast:settings>
-			<itunes:subtitle>PRISMATIC by Tiësto Episode 005</itunes:subtitle>
+			<acast:episodeUrl>episode-011</acast:episodeUrl>
+			<acast:settings><![CDATA[FYjHyZbXWHZ7gmX8Pp1rmbKbhgrQiwYShz70Q9/ffXZMTtedvdcRQbP4eiLMjXzCKLPjEYLpGj+NMVKa+5C8pL4u/EOj1Vw4h5MMJYp0lCcFAe0fnxBJy/1ju4Qxy1fh8gO4DvlGA40yms2g0/hOkcrfHIopjTygHFqGwwOPKFIai4SuTvs86Lx3UYCyl6ZsNcnLsd5hEkvO2SZnlJ175b1WhJXImae5kJkSQC3lFzJ9o6VbPEZUZ0PKJBO/wZo9sGgrFOdPBgfXV0oFd9Ng8FKxvnPkuUSBQBEXPPFtkH9jlXfG/7/SgzyDnmaG3KeG]]></acast:settings>
+			<itunes:subtitle>PRISMATIC by Tiësto Episode 011</itunes:subtitle>
 			<itunes:episodeType>full</itunes:episodeType>
-			<itunes:image href="https://assets.pippa.io/shows/593eded1acfa040562f3480b/1769867061063-b9688126-d37e-48b1-bf44-cf2582f23ee8.jpeg"/>
-			<description><![CDATA[PRISMATIC by Tiësto Episode 005<hr><p style='color:grey; font-size:0.75em;'> Hosted on Acast. See <a style='color:grey;' target='_blank' rel='noopener noreferrer' href='https://acast.com/privacy'>acast.com/privacy</a> for more information.</p>]]></description>
-			<itunes:summary><![CDATA[PRISMATIC by Tiësto Episode 005<hr><p style='color:grey; font-size:0.75em;'> Hosted on Acast. See <a style='color:grey;' target='_blank' rel='noopener noreferrer' href='https://acast.com/privacy'>acast.com/privacy</a> for more information.</p>]]></itunes:summary>
+			<itunes:image href="https://assets.pippa.io/shows/593eded1acfa040562f3480b/1773847785267-2a8ed666-cc88-4806-b0c8-356b72663313.jpeg"/>
+			<description><![CDATA[PRISMATIC by Tiësto Episode 011<hr><p style='color:grey; font-size:0.75em;'> Hosted on Acast. See <a style='color:grey;' target='_blank' rel='noopener noreferrer' href='https://acast.com/privacy'>acast.com/privacy</a> for more information.</p>]]></description>
+			<itunes:summary><![CDATA[PRISMATIC by Tiësto Episode 011<hr><p style='color:grey; font-size:0.75em;'> Hosted on Acast. See <a style='color:grey;' target='_blank' rel='noopener noreferrer' href='https://acast.com/privacy'>acast.com/privacy</a> for more information.</p>]]></itunes:summary>
 		</item>
 		<item>
-			<title>Episode 004</title>
-			<itunes:title>Episode 004</itunes:title>
-			<pubDate>Fri, 30 Jan 2026 15:00:00 GMT</pubDate>
-			<itunes:duration>1:00:10</itunes:duration>
-			<enclosure url="https://sphinx.acast.com/p/open/s/593eded1acfa040562f3480b/e/6979d6c6fbdedf64040b84c9/media.mp3" length="88391620" type="audio/mpeg"/>
-			<guid isPermaLink="false">6979d6c6fbdedf64040b84c9</guid>
+			<title>Episode 010</title>
+			<itunes:title>Episode 010</itunes:title>
+			<pubDate>Fri, 13 Mar 2026 15:00:00 GMT</pubDate>
+			<itunes:duration>59:25</itunes:duration>
+			<enclosure url="https://sphinx.acast.com/p/open/s/593eded1acfa040562f3480b/e/69b2f2ad00294d4abc210e3c/media.mp3" length="87566780" type="audio/mpeg"/>
+			<guid isPermaLink="false">69b2f2ad00294d4abc210e3c</guid>
 			<itunes:explicit>false</itunes:explicit>
-			<link>https://shows.acast.com/clublife-by-tiesto/episodes/episode-004</link>
-			<acast:episodeId>6979d6c6fbdedf64040b84c9</acast:episodeId>
+			<link>https://shows.acast.com/clublife-by-tiesto/episodes/episode-010</link>
+			<acast:episodeId>69b2f2ad00294d4abc210e3c</acast:episodeId>
 			<acast:showId>593eded1acfa040562f3480b</acast:showId>
-			<acast:episodeUrl>episode-004</acast:episodeUrl>
-			<acast:settings><![CDATA[FYjHyZbXWHZ7gmX8Pp1rmbKbhgrQiwYShz70Q9/ffXZMTtedvdcRQbP4eiLMjXzCKLPjEYLpGj+NMVKa+5C8pL4u/EOj1Vw4h5MMJYp0lCcFAe0fnxBJy/1ju4Qxy1fh8gO4DvlGA40yms2g0/hOkcrfHIopjTygHFqGwwOPKFIai4SuTvs86Lx3UYCyl6ZsNcnLsd5hEkvO2SZnlJ175b1WhJXImae5kJkSQC3lFzLRVnHizrw4HMlh+rnW7BtJSYnSMWs47zEr9ezA28W1wpostfIRzaHXwncjP1GbG/kLZF8gEKhyXzC4NSdN2/Av]]></acast:settings>
-			<itunes:subtitle>PRISMATIC by Tiësto Episode 004</itunes:subtitle>
+			<acast:episodeUrl>episode-010</acast:episodeUrl>
+			<acast:settings><![CDATA[FYjHyZbXWHZ7gmX8Pp1rmbKbhgrQiwYShz70Q9/ffXZMTtedvdcRQbP4eiLMjXzCKLPjEYLpGj+NMVKa+5C8pL4u/EOj1Vw4h5MMJYp0lCcFAe0fnxBJy/1ju4Qxy1fh8gO4DvlGA40yms2g0/hOkcrfHIopjTygHFqGwwOPKFIai4SuTvs86Lx3UYCyl6ZsNcnLsd5hEkvO2SZnlJ175b1WhJXImae5kJkSQC3lFzJpo5QnSDD4X9Uc8iK+rPbWCnDiENeJ+F/Fh/cNwthdGk71uM/LtAMaUp7YovqZigKGBCE2XadzlTKm+NeJ3VsG]]></acast:settings>
+			<itunes:subtitle>PRISMATIC by Tiësto Episode 010</itunes:subtitle>
 			<itunes:episodeType>full</itunes:episodeType>
-			<itunes:image href="https://assets.pippa.io/shows/593eded1acfa040562f3480b/1769592493666-f038f0f6-7778-4ba2-ad9a-b2aa4a0d1b5a.jpeg"/>
-			<description><![CDATA[PRISMATIC by Tiësto Episode 004<hr><p style='color:grey; font-size:0.75em;'> Hosted on Acast. See <a style='color:grey;' target='_blank' rel='noopener noreferrer' href='https://acast.com/privacy'>acast.com/privacy</a> for more information.</p>]]></description>
-			<itunes:summary><![CDATA[PRISMATIC by Tiësto Episode 004<hr><p style='color:grey; font-size:0.75em;'> Hosted on Acast. See <a style='color:grey;' target='_blank' rel='noopener noreferrer' href='https://acast.com/privacy'>acast.com/privacy</a> for more information.</p>]]></itunes:summary>
+			<itunes:image href="https://assets.pippa.io/shows/593eded1acfa040562f3480b/1773335173035-b3292561-9ba9-4555-b1ca-ff570efd1e79.jpeg"/>
+			<description><![CDATA[PRISMATIC by Tiësto Episode 010<hr><p style='color:grey; font-size:0.75em;'> Hosted on Acast. See <a style='color:grey;' target='_blank' rel='noopener noreferrer' href='https://acast.com/privacy'>acast.com/privacy</a> for more information.</p>]]></description>
+			<itunes:summary><![CDATA[PRISMATIC by Tiësto Episode 010<hr><p style='color:grey; font-size:0.75em;'> Hosted on Acast. See <a style='color:grey;' target='_blank' rel='noopener noreferrer' href='https://acast.com/privacy'>acast.com/privacy</a> for more information.</p>]]></itunes:summary>
 		</item>
     	<itunes:category text="Music"/>
     </channel>
