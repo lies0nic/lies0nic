@@ -8,6 +8,7 @@ based on tracklists from the YouTube playlist RSS feed.
 """
 
 import argparse
+import html
 import io
 import json
 import os
@@ -209,9 +210,46 @@ def clean_feed_files(
     return changed
 
 
+def format_tracklist_html(tracks: List[Dict[str, Any]]) -> str:
+    """Render a compact tracklist snippet for an episode description."""
+    if not tracks:
+        return ""
+
+    parts: List[str] = []
+    for track in tracks:
+        time_text = format_track_time(track)
+        title = str(track.get('title', '')).strip()
+        if not title:
+            continue
+        title = html.escape(title, quote=False)
+        if time_text:
+            parts.append(f'{html.escape(time_text, quote=False)} - {title}')
+        else:
+            parts.append(title)
+
+    return '<br>'.join(parts)
+
+
+def build_enriched_description(raw_description: str, tracks: List[Dict[str, Any]]) -> str:
+    """Append tracklist details to the existing description while preserving the Acast footer."""
+    tracklist_html = format_tracklist_html(tracks)
+    if not tracklist_html:
+        return raw_description
+
+    if '<hr>' in raw_description:
+        intro, footer = raw_description.split('<hr>', 1)
+        footer = '<hr>' + footer
+    else:
+        intro = raw_description
+        footer = ''
+
+    return f'{intro}<br>Tracklist:<br>{tracklist_html}{footer}'
+
+
 def add_chapters_to_source_xml(
     source_xml: str,
     chapter_urls_by_episode: Dict[int, str],
+    chapter_tracks_by_episode: Optional[Dict[int, List[Dict[str, Any]]]] = None,
 ) -> str:
     """Add chapter references while preserving every other byte of the source XML."""
     newline = '\r\n' if '\r\n' in source_xml else '\n'
@@ -223,6 +261,7 @@ def add_chapters_to_source_xml(
             count=1,
         )
 
+    chapter_tracks_by_episode = chapter_tracks_by_episode or {}
     item_pattern = re.compile(r'(<item\b[^>]*>.*?</item\s*>)', re.DOTALL | re.IGNORECASE)
     chapter_pattern = re.compile(
         r'^[ \t]*<podcast:chapters\b[^>]*/>[ \t]*(?:\r?\n)?',
@@ -235,6 +274,38 @@ def add_chapters_to_source_xml(
         title = re.sub(r'<[^>]+>', '', title_match.group(1)).strip() if title_match else ''
         episode_number = extract_episode_number(title)
         chapter_url = chapter_urls_by_episode.get(episode_number) if episode_number is not None else None
+        tracks = chapter_tracks_by_episode.get(episode_number, []) if episode_number is not None else []
+
+        if tracks:
+            def replace_value(tag_name: str) -> str:
+                tag_pattern = re.compile(
+                    rf'(<{tag_name}\b[^>]*>\s*)<!\[CDATA\[(.*?)\]\]>(\s*</{tag_name}>)',
+                    re.DOTALL | re.IGNORECASE,
+                )
+                match_tag = tag_pattern.search(item_xml)
+                if match_tag:
+                    current_value = match_tag.group(2)
+                    new_value = build_enriched_description(current_value, tracks)
+                    return item_xml[:match_tag.start()] + (
+                        f'{match_tag.group(1)}<![CDATA[{new_value}]]>{match_tag.group(3)}'
+                    ) + item_xml[match_tag.end():]
+
+                generic_pattern = re.compile(
+                    rf'(<{tag_name}\b[^>]*>)(.*?)(</{tag_name}>)',
+                    re.DOTALL | re.IGNORECASE,
+                )
+                match_tag = generic_pattern.search(item_xml)
+                if match_tag:
+                    current_value = match_tag.group(2)
+                    new_value = build_enriched_description(current_value, tracks)
+                    return item_xml[:match_tag.start()] + (
+                        f'{match_tag.group(1)}{new_value}{match_tag.group(3)}'
+                    ) + item_xml[match_tag.end():]
+                return item_xml
+
+            item_xml = replace_value('description')
+            item_xml = replace_value('itunes:summary')
+
         if not chapter_url:
             return item_xml
 
@@ -292,6 +363,7 @@ def update_feed(
     
     yt_episodes = fetch_youtube_episodes()
     chapter_urls_by_episode: Dict[int, str] = {}
+    chapter_tracks_by_episode: Dict[int, List[Dict[str, Any]]] = {}
     retained_chapter_filenames: set[str] = set()
     changes_made = False
     
@@ -317,6 +389,7 @@ def update_feed(
                 
                 chapter_url = f"{base_chapters_url.rstrip('/')}/{json_filename}"
                 chapter_urls_by_episode[ep_num] = chapter_url
+                chapter_tracks_by_episode[ep_num] = tracks
                 print(f"Prepared <podcast:chapters> tag for {title}")
 
     if clean_feed_files(
@@ -339,7 +412,7 @@ def update_feed(
             changes_made = True
 
     source_xml = parent_xml.decode('utf-8')
-    output_xml = add_chapters_to_source_xml(source_xml, chapter_urls_by_episode)
+    output_xml = add_chapters_to_source_xml(source_xml, chapter_urls_by_episode, chapter_tracks_by_episode)
     
     # Check if feed.xml on disk is different
     current_xml = ""
