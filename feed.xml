@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <?xml-stylesheet type="text/xsl" href="/global/feed/rss.xslt" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:googleplay="http://www.google.com/schemas/play-podcasts/1.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:media="http://search.yahoo.com/mrss/" xmlns:podaccess="https://access.acast.com/schema/1.0/" xmlns:acast="https://schema.acast.com/1.0/" xmlns:podcast="https://podcastindex.org/namespace/1.0">
+   <script src="https://feeds.acast.com/global/feed/xslt-polyfill.min.js" xmlns="http://www.w3.org/1999/xhtml"></script>
     <channel>
 		<ttl>60</ttl>
 		<generator>acast.com</generator>
@@ -34,6 +35,86 @@
 			</image>
 			<itunes:new-feed-url>https://feeds.acast.com/public/shows/593eded1acfa040562f3480b</itunes:new-feed-url>
 		<item>
+			<title>Episode 041</title>
+			<itunes:title>Episode 041</itunes:title>
+			<pubDate>Fri, 16 Oct 2026 14:00:00 GMT</pubDate>
+			<itunes:duration>59:53</itunes:duration>
+			<enclosure url="https://sphinx.acast.com/p/open/s/593eded1acfa040562f3480b/e/6ad0d36f3b41843137005ff6/media.mp3" length="57501152" type="audio/mpeg"/>
+			<guid isPermaLink="false">6ad0d36f3b41843137005ff6</guid>
+			<itunes:explicit>false</itunes:explicit>
+			<link>https://shows.acast.com/clublife-by-tiesto/episodes/episode-041</link>
+			<acast:episodeId>6ad0d36f3b41843137005ff6</acast:episodeId>
+			<acast:showId>593eded1acfa040562f3480b</acast:showId>
+			<acast:episodeUrl>episode-041</acast:episodeUrl>
+			<acast:settings><![CDATA[FYjHyZbXWHZ7gmX8Pp1rmRbkUlg2iR8fDtnl1O71B2N8B7jZZH+7YdsHlGFxMJ/JB5ewwSWwnDfITsERRlXnRPdjbJm7d4qQ2rUK1Oh2E65gYDhVAjVZ14DHwOhC8Pz9i+jargxr+Z+jVE9yJC778zhTQHU6gZEVV13nQX7pAdNB4u1MbNygBgy4VtStsTGZDTm4svZmzStw+pmjnI3CvMOlq6Lclh8sJpsGYBnLtR96Hua0odLUp4OBNJsgfTAU80stdPNMS/8X4qOZCphQPg109z4FEn6fZye426l4K3WWySZIi9a43N6KJ/Qf5xfovzQyOPfwfi/Zb4xyg6zJfTeeCh1uZN7DvVTZS3opOeA=]]></acast:settings>
+			<itunes:subtitle>PRISMATIC by Tiësto Episode 041</itunes:subtitle>
+			<itunes:episodeType>full</itunes:episodeType>
+			<itunes:image href="https://assets.pippa.io/shows/593eded1acfa040562f3480b/1792070473537-ab37782c-fb56-4c4f-bb66-0d7a6dba81f0.jpeg"/>
+			<podcast:chapters url="https://lies0nic.github.io/lies0nic/episode-041-chapters.json" type="application/json+chapters"/>
+			<description><![CDATA[PRISMATIC by Tiësto Episode 041<br>Tracklist:<br>00:00 - Intro<br>00:32 - 1 CIElll - To Pieces<br>04:34 - 2 Tiësto &amp; Cleopard2000 &amp; CH4YN - Hard To Be Around<br>07:41 - 3 DJ HEARTSTRING &amp; Spriitzz - Sentimental Ultra<br>10:37 - 4 EMMRSN - Brave New World<br>14:38 - 5 DEVERAUX - Under Pressure<br>18:25 - 6 Funk Tribu &amp; Marlon Hoffstadt - Bring That Acid Back<br>20:38 - 7 HACKETT - Forever Waiting<br>22:39 - 8 Eli Brown and Dimension - Frequency<br>26:24 - 9 GIA - Dance With Me<br>28:39 - 10 Tiësto &amp; Brieanna Grace - Beautiful Places (Mert Harmankaya Remix)<br>31:58 - 11 Rank 1 - Reuneyeted<br>35:45 - 12 Sex Wax x Milan Fernandes - Ecstasy<br>38:31 - 13 JÄMO - Everywhere<br>40:34 - 14 Kai Tracid - Trance &amp; Acid (BLONDEX Rework)<br>44:19 - 15 CIS - Electronic Void<br>47:10 - 16 KETTAMA - Man With a Second Face (JÄMO Remix)<br>49:35 - 17 Lisa Korver - Motel<br>53:16 - 18 JOR - TOP STRIKER<br>56:15 - 19 Westfall - Feel Your Love<hr><p style='color:grey; font-size:0.75em;'> Hosted on Acast. See <a style='color:grey;' target='_blank' rel='noopener noreferrer' href='https://acast.com/privacy'>acast.com/privacy</a> for more information.</p>]]></description>
+			<itunes:summary><![CDATA[PRISMATIC by Tiësto Episode 041<br>Tracklist:<br>00:00 - Intro<br>00:32 - 1 CIElll - To Pieces<br>04:34 - 2 Tiësto &amp; Cleopard2000 &amp; CH4YN - Hard To Be Around<br>07:41 - 3 DJ HEARTSTRING &amp; Spriitzz - Sentimental Ultra<br>10:37 - 4 EMMRSN - Brave New World<br>14:38 - 5 DEVERAUX - Under Pressure<br>18:25 - 6 Funk Tribu &amp; Marlon Hoffstadt - Bring That Acid Back<br>20:38 - 7 HACKETT - Forever Waiting<br>22:39 - 8 Eli Brown and Dimension - Frequency<br>26:24 - 9 GIA - Dance With Me<br>28:39 - 10 Tiësto &amp; Brieanna Grace - Beautiful Places (Mert Harmankaya Remix)<br>31:58 - 11 Rank 1 - Reuneyeted<br>35:45 - 12 Sex Wax x Milan Fernandes - Ecstasy<br>38:31 - 13 JÄMO - Everywhere<br>40:34 - 14 Kai Tracid - Trance &amp; Acid (BLONDEX Rework)<br>44:19 - 15 CIS - Electronic Void<br>47:10 - 16 KETTAMA - Man With a Second Face (JÄMO Remix)<br>49:35 - 17 Lisa Korver - Motel<br>53:16 - 18 JOR - TOP STRIKER<br>56:15 - 19 Westfall - Feel Your Love<hr><p style='color:grey; font-size:0.75em;'> Hosted on Acast. See <a style='color:grey;' target='_blank' rel='noopener noreferrer' href='https://acast.com/privacy'>acast.com/privacy</a> for more information.</p>]]></itunes:summary>
+		</item>
+		<item>
+			<title>Episode 040</title>
+			<itunes:title>Episode 040</itunes:title>
+			<pubDate>Fri, 09 Oct 2026 14:00:00 GMT</pubDate>
+			<itunes:duration>1:00:02</itunes:duration>
+			<enclosure url="https://sphinx.acast.com/p/open/s/593eded1acfa040562f3480b/e/6ac4fb13e361f9e2fbc2fa44/media.mp3" length="88386887" type="audio/mpeg"/>
+			<guid isPermaLink="false">6ac4fb13e361f9e2fbc2fa44</guid>
+			<itunes:explicit>false</itunes:explicit>
+			<link>https://shows.acast.com/clublife-by-tiesto/episodes/episode-040</link>
+			<acast:episodeId>6ac4fb13e361f9e2fbc2fa44</acast:episodeId>
+			<acast:showId>593eded1acfa040562f3480b</acast:showId>
+			<acast:episodeUrl>episode-040</acast:episodeUrl>
+			<acast:settings><![CDATA[FYjHyZbXWHZ7gmX8Pp1rmRbkUlg2iR8fDtnl1O71B2N8B7jZZH+7YdsHlGFxMJ/JB5ewwSWwnDfITsERRlXnRPdjbJm7d4qQ2rUK1Oh2E65gYDhVAjVZ14DHwOhC8Pz9i+jargxr+Z+jVE9yJC778zhTQHU6gZEVV13nQX7pAdNB4u1MbNygBgy4VtStsTGZDTm4svZmzStw+pmjnI3CvMOlq6Lclh8sJpsGYBnLtR96Hua0odLUp4OBNJsgfTAUF91z+NV8IOQ7hfL2BqHEBbq4MSnTAewgI/T+2d4IOCm5ORZHRiwhc/ObMhGUitZSP68shwER9699j8NLoqUzvA4QLo/Xk5LeX2hdpvKRCYo=]]></acast:settings>
+			<itunes:subtitle>PRISMATIC by Tiësto Episode 040</itunes:subtitle>
+			<itunes:episodeType>full</itunes:episodeType>
+			<itunes:image href="https://assets.pippa.io/shows/593eded1acfa040562f3480b/1791294040174-d1ce7cdf-eacd-4a88-93b7-375845824702.jpeg"/>
+			<podcast:chapters url="https://lies0nic.github.io/lies0nic/episode-040-chapters.json" type="application/json+chapters"/>
+			<description><![CDATA[PRISMATIC by Tiësto Episode 040<br>Tracklist:<br>00:00 - Intro<br>00:32 - 1 Tiësto &amp; Cleopard2000 &amp; CH4YN - Hard To Be Around<br>04:20 - 2 Fenrick - Dance Is Math<br>06:21 - 3 Tai Woffinden &amp; SUPERSTRINGS - Latitude 38.9<br>08:39 - 4 2OVER (NL) - I Wanna Know<br>10:27 - 5 LILLE x ANK - Paradigm<br>12:41 - 6 CHARMUR - Touch Me<br>16:23 - 7 FROM ORBIT &amp; Lumine - Walkin In The Land<br>18:29 - 8 Jeno - Oldskool<br>21:02 - 9 DJ Heartstring &amp; Sam Gellaitry - So Many Things To Say<br>23:37 - 10 R3HAB, ARTBAT - Dramma<br>27:29 - 11 Skuro &amp; Enzo Gauthier - Keep It Moving<br>31:11 - 12 Andronicus - Make You Whole (JIUZ REMIX)<br>32:35 - 13 Swedish House Mafia, Lykke Li - Happiness Is So Sad (IDEMI Remix)<br>36:40 - 14 Solarstone vs. Sirocco - Destination (Effen Remix)<br>41:08 - 15 Y-Traxx - Mystery Land (Karl Mac 6am Ibiza sunrise Remix)<br>46:46 - 16 Exteon - Rave Racer<br>49:52 - 17 djtry x DJ WIFI - Bringing It Back<br>51:50 - 18 The Funkmoore Brothers - CRACK IT<br>55:15 - 19 Tiësto - Flight 643 (SPATE Edit)<hr><p style='color:grey; font-size:0.75em;'> Hosted on Acast. See <a style='color:grey;' target='_blank' rel='noopener noreferrer' href='https://acast.com/privacy'>acast.com/privacy</a> for more information.</p>]]></description>
+			<itunes:summary><![CDATA[PRISMATIC by Tiësto Episode 040<br>Tracklist:<br>00:00 - Intro<br>00:32 - 1 Tiësto &amp; Cleopard2000 &amp; CH4YN - Hard To Be Around<br>04:20 - 2 Fenrick - Dance Is Math<br>06:21 - 3 Tai Woffinden &amp; SUPERSTRINGS - Latitude 38.9<br>08:39 - 4 2OVER (NL) - I Wanna Know<br>10:27 - 5 LILLE x ANK - Paradigm<br>12:41 - 6 CHARMUR - Touch Me<br>16:23 - 7 FROM ORBIT &amp; Lumine - Walkin In The Land<br>18:29 - 8 Jeno - Oldskool<br>21:02 - 9 DJ Heartstring &amp; Sam Gellaitry - So Many Things To Say<br>23:37 - 10 R3HAB, ARTBAT - Dramma<br>27:29 - 11 Skuro &amp; Enzo Gauthier - Keep It Moving<br>31:11 - 12 Andronicus - Make You Whole (JIUZ REMIX)<br>32:35 - 13 Swedish House Mafia, Lykke Li - Happiness Is So Sad (IDEMI Remix)<br>36:40 - 14 Solarstone vs. Sirocco - Destination (Effen Remix)<br>41:08 - 15 Y-Traxx - Mystery Land (Karl Mac 6am Ibiza sunrise Remix)<br>46:46 - 16 Exteon - Rave Racer<br>49:52 - 17 djtry x DJ WIFI - Bringing It Back<br>51:50 - 18 The Funkmoore Brothers - CRACK IT<br>55:15 - 19 Tiësto - Flight 643 (SPATE Edit)<hr><p style='color:grey; font-size:0.75em;'> Hosted on Acast. See <a style='color:grey;' target='_blank' rel='noopener noreferrer' href='https://acast.com/privacy'>acast.com/privacy</a> for more information.</p>]]></itunes:summary>
+		</item>
+		<item>
+			<title>Episode 039</title>
+			<itunes:title>Episode 039</itunes:title>
+			<pubDate>Fri, 02 Oct 2026 14:00:00 GMT</pubDate>
+			<itunes:duration>59:48</itunes:duration>
+			<enclosure url="https://sphinx.acast.com/p/open/s/593eded1acfa040562f3480b/e/6abe837d90f8a952d484ecba/media.mp3" length="143550422" type="audio/mpeg"/>
+			<guid isPermaLink="false">6abe837d90f8a952d484ecba</guid>
+			<itunes:explicit>false</itunes:explicit>
+			<link>https://shows.acast.com/clublife-by-tiesto/episodes/episode-039</link>
+			<acast:episodeId>6abe837d90f8a952d484ecba</acast:episodeId>
+			<acast:showId>593eded1acfa040562f3480b</acast:showId>
+			<acast:episodeUrl>episode-039</acast:episodeUrl>
+			<acast:settings><![CDATA[FYjHyZbXWHZ7gmX8Pp1rmRbkUlg2iR8fDtnl1O71B2N8B7jZZH+7YdsHlGFxMJ/JB5ewwSWwnDfITsERRlXnRPdjbJm7d4qQ2rUK1Oh2E65gYDhVAjVZ14DHwOhC8Pz9i+jargxr+Z+jVE9yJC778zhTQHU6gZEVV13nQX7pAdNB4u1MbNygBgy4VtStsTGZDTm4svZmzStw+pmjnI3CvMOlq6Lclh8sJpsGYBnLtR96Hua0odLUp4OBNJsgfTAUKyhd1YiY55GIHP69u+ZVlI5ZD74kyJORtBveIN2catcjc5FacGNS4hoENMJzfiScOmHJ6zMmTN8POF88nEcVGfr3u63PYAIbQbTRxyYFFyk=]]></acast:settings>
+			<itunes:subtitle>PRISMATIC by Tiësto Episode 039</itunes:subtitle>
+			<itunes:episodeType>full</itunes:episodeType>
+			<itunes:image href="https://assets.pippa.io/shows/593eded1acfa040562f3480b/1790870166727-71f29153-8489-4f4b-ad10-a5a4c83020b3.jpeg"/>
+			<podcast:chapters url="https://lies0nic.github.io/lies0nic/episode-039-chapters.json" type="application/json+chapters"/>
+			<description><![CDATA[PRISMATIC by Tiësto Episode 039<br>Tracklist:<br>00:00 - Intro<br>00:32 - 1 Lisa Korver - Motel<br>03:21 - 2 Grace - Not Over Yet (CIElll Golden Hour Mix)<br>06:17 - 3 Jeno - Ecstasy<br>10:33 - 4 V. Christie - Exoskeleton<br>13:43 - 5 Hackett - Thin Air<br>16:39 - 6 Bryan Kearney - Forevermore<br>20:17 - 7 KernelKrop - TIME TRAVEL<br>23:43 - 8 camoufly - Odyssey<br>25:47 - 9 KASIA &amp; Faithless - Tarantula<br>28:08 - 10 Einmusik feat. Shayan - Do You Think Of Me<br>32:58 - 11 Kenneth Thomas - Emily (C-Sharp)<br>38:58 - 12 Rihanna - Where Have You Been (KAF3R Remix)<br>42:11 - 13 Superstrobe - Voices<br>44:40 - 14 DJ CØSMIC DREAM - Polynesia<br>48:27 - 15 Max King &amp; GIA - Balearic Teardrops<br>50:39 - 16 BLONDEX - Somnia<br>53:06 - 17 SHVDZ - Go With The Flow<br>54:59 - 18 Tom Carroll - Empty Sky<br>57:40 - 19 Lavinia, Ely Oaks - Dumb Decisions<hr><p style='color:grey; font-size:0.75em;'> Hosted on Acast. See <a style='color:grey;' target='_blank' rel='noopener noreferrer' href='https://acast.com/privacy'>acast.com/privacy</a> for more information.</p>]]></description>
+			<itunes:summary><![CDATA[PRISMATIC by Tiësto Episode 039<br>Tracklist:<br>00:00 - Intro<br>00:32 - 1 Lisa Korver - Motel<br>03:21 - 2 Grace - Not Over Yet (CIElll Golden Hour Mix)<br>06:17 - 3 Jeno - Ecstasy<br>10:33 - 4 V. Christie - Exoskeleton<br>13:43 - 5 Hackett - Thin Air<br>16:39 - 6 Bryan Kearney - Forevermore<br>20:17 - 7 KernelKrop - TIME TRAVEL<br>23:43 - 8 camoufly - Odyssey<br>25:47 - 9 KASIA &amp; Faithless - Tarantula<br>28:08 - 10 Einmusik feat. Shayan - Do You Think Of Me<br>32:58 - 11 Kenneth Thomas - Emily (C-Sharp)<br>38:58 - 12 Rihanna - Where Have You Been (KAF3R Remix)<br>42:11 - 13 Superstrobe - Voices<br>44:40 - 14 DJ CØSMIC DREAM - Polynesia<br>48:27 - 15 Max King &amp; GIA - Balearic Teardrops<br>50:39 - 16 BLONDEX - Somnia<br>53:06 - 17 SHVDZ - Go With The Flow<br>54:59 - 18 Tom Carroll - Empty Sky<br>57:40 - 19 Lavinia, Ely Oaks - Dumb Decisions<hr><p style='color:grey; font-size:0.75em;'> Hosted on Acast. See <a style='color:grey;' target='_blank' rel='noopener noreferrer' href='https://acast.com/privacy'>acast.com/privacy</a> for more information.</p>]]></itunes:summary>
+		</item>
+		<item>
+			<title>Episode 038</title>
+			<itunes:title>Episode 038</itunes:title>
+			<pubDate>Fri, 25 Sep 2026 14:00:00 GMT</pubDate>
+			<itunes:duration>1:00:12</itunes:duration>
+			<enclosure url="https://sphinx.acast.com/p/open/s/593eded1acfa040562f3480b/e/6ab13b711f6f5b915fa329e5/media.mp3" length="57792888" type="audio/mpeg"/>
+			<guid isPermaLink="false">6ab13b711f6f5b915fa329e5</guid>
+			<itunes:explicit>false</itunes:explicit>
+			<link>https://shows.acast.com/clublife-by-tiesto/episodes/episode-038</link>
+			<acast:episodeId>6ab13b711f6f5b915fa329e5</acast:episodeId>
+			<acast:showId>593eded1acfa040562f3480b</acast:showId>
+			<acast:episodeUrl>episode-038</acast:episodeUrl>
+			<acast:settings><![CDATA[FYjHyZbXWHZ7gmX8Pp1rmRbkUlg2iR8fDtnl1O71B2N8B7jZZH+7YdsHlGFxMJ/JB5ewwSWwnDfITsERRlXnRPdjbJm7d4qQ2rUK1Oh2E65gYDhVAjVZ14DHwOhC8Pz9i+jargxr+Z+jVE9yJC778zhTQHU6gZEVV13nQX7pAdNB4u1MbNygBgy4VtStsTGZDTm4svZmzStw+pmjnI3CvMOlq6Lclh8sJpsGYBnLtR96Hua0odLUp4OBNJsgfTAUePQjn3kTxu6qFTjXolkEhff5Vgnqi/hJxERlgm22EJ7TKvMhiM6raRft81QPPm/eX/9Xf7y2T8IcDei+vlram89XXyNRj472ND2CIoPdWNI=]]></acast:settings>
+			<itunes:subtitle>PRISMATIC by Tiësto Episode 038</itunes:subtitle>
+			<itunes:episodeType>full</itunes:episodeType>
+			<itunes:image href="https://assets.pippa.io/shows/593eded1acfa040562f3480b/1789999893709-5861330f-2253-4f2a-8fec-6991f6c6b8b2.jpeg"/>
+			<podcast:chapters url="https://lies0nic.github.io/lies0nic/episode-038-chapters.json" type="application/json+chapters"/>
+			<description><![CDATA[PRISMATIC by Tiësto Episode 038<br>Tracklist:<br>00:00 - Intro<br>00:32 - 1 CHARMUR - Touch Me<br>04:54 - 2 René et Gaston, Marco Nobel, EMMRSN, Chocolate Puma - Vallée de L'Armes<br>06:44 - 3 DOREY - Put Your Guard Down<br>09:42 - 4 KE-YEN - YOUR WHOLE LIFE IS JUST A DREAM<br>13:49 - 5 The Roc Project feat. Tina Arena - Never (LD50 &amp; Thompa Remix)<br>18:51 - 6 YORK x Bella Claxton x Mike Momburg - On The Beach<br>21:39 - 7 TITVS - Grance (FN)<br>23:27 - 8 ANK - WISH THAT YOU WERE MINE<br>24:50 - 9 LD50 - Solara<br>28:27 - 10 CHOOFA - Get Down<br>30:16 - 11 From Orbit x EMMRSON - Bring It<br>32:32 - 12 Tiësto - Flight 643 (Krevix Remix)<br>35:28 - 13 Marisa Turner - People 2 People (StanV Remix)<br>38:55 - 14 Daniel Skyver - Respace<br>41:49 - 15 OSSA - Alone (Can't Have Your Love)<br>44:32 - 16 Marlon Hoffstadt &amp; Niko Rubio - Water<br>48:05 - 17 Shake Daddy, Jimmygilmartin - 303 Odyssey<br>50:48 - 18 Underworld - Born Slippy (NUXX) (Portex Remix)<br>54:57 - 19 snoritz - Flute Track<br>57:15 - 20 CH4YN - Pretty Green Eyes<hr><p style='color:grey; font-size:0.75em;'> Hosted on Acast. See <a style='color:grey;' target='_blank' rel='noopener noreferrer' href='https://acast.com/privacy'>acast.com/privacy</a> for more information.</p>]]></description>
+			<itunes:summary><![CDATA[PRISMATIC by Tiësto Episode 038<br>Tracklist:<br>00:00 - Intro<br>00:32 - 1 CHARMUR - Touch Me<br>04:54 - 2 René et Gaston, Marco Nobel, EMMRSN, Chocolate Puma - Vallée de L'Armes<br>06:44 - 3 DOREY - Put Your Guard Down<br>09:42 - 4 KE-YEN - YOUR WHOLE LIFE IS JUST A DREAM<br>13:49 - 5 The Roc Project feat. Tina Arena - Never (LD50 &amp; Thompa Remix)<br>18:51 - 6 YORK x Bella Claxton x Mike Momburg - On The Beach<br>21:39 - 7 TITVS - Grance (FN)<br>23:27 - 8 ANK - WISH THAT YOU WERE MINE<br>24:50 - 9 LD50 - Solara<br>28:27 - 10 CHOOFA - Get Down<br>30:16 - 11 From Orbit x EMMRSON - Bring It<br>32:32 - 12 Tiësto - Flight 643 (Krevix Remix)<br>35:28 - 13 Marisa Turner - People 2 People (StanV Remix)<br>38:55 - 14 Daniel Skyver - Respace<br>41:49 - 15 OSSA - Alone (Can't Have Your Love)<br>44:32 - 16 Marlon Hoffstadt &amp; Niko Rubio - Water<br>48:05 - 17 Shake Daddy, Jimmygilmartin - 303 Odyssey<br>50:48 - 18 Underworld - Born Slippy (NUXX) (Portex Remix)<br>54:57 - 19 snoritz - Flute Track<br>57:15 - 20 CH4YN - Pretty Green Eyes<hr><p style='color:grey; font-size:0.75em;'> Hosted on Acast. See <a style='color:grey;' target='_blank' rel='noopener noreferrer' href='https://acast.com/privacy'>acast.com/privacy</a> for more information.</p>]]></itunes:summary>
+		</item>
+		<item>
 			<title>Episode 037</title>
 			<itunes:title>Episode 037</itunes:title>
 			<pubDate>Fri, 18 Sep 2026 14:00:00 GMT</pubDate>
@@ -52,86 +133,6 @@
 			<podcast:chapters url="https://lies0nic.github.io/lies0nic/episode-037-chapters.json" type="application/json+chapters"/>
 			<description><![CDATA[PRISMATIC by Tiësto Episode 037<br>Tracklist:<br>00:00 - Intro<br>00:32 - 1 Flourish, Wolf Cutt - The Sign (Tiësto Remix)<br>03:06 - 2 S3PPA - Together<br>04:55 - 3 TESS - Light<br>08:31 - 4 LEFRIX - On Your Mind<br>11:38 - 5 CIS - He The Best<br>15:21 - 6 DJ GUESTLIST x Cleopard2000 - Special Touch<br>17:36 - 7 KIMMIC x Karen Overton - Your Loving Arms<br>20:56 - 8 John Dahlback x Luvstruck - Pyramid<br>23:08 - 9 Semblance Smile &amp; North Skies - Trying (Mostly Cloudy Fastlane Remix)<br>26:21 - 10 Lykke Li - I Follow Rivers (Addal Remix)<br>28:18 - 11 Carl Bee - Hits Like This (feat. Cari Golden)<br>32:04 - 12 Tommy Phillips - Sun is Shining (Lovelee Dae)<br>35:33 - 13 SWIM - Leaving On<br>38:51 - 14 Skyvol &amp; Monzilla - Vinyl Lover<br>42:49 - 15 Doppenberg &amp; Vaco feat. Alexandra Kessler - Always (Estaremos Aqui)<br>46:24 - 16 Push &amp; KAS:ST - Strange World<br>50:17 - 17 LAWTON, Trancemaster Krause &amp; Caroline Roxy - Horizon<br>53:41 - 18 Linds - Don't Stop It<br>54:46 - 19 Gravagerz - Self Aware<br>57:26 - 20 two girls one mom - Certified Floor Hitter<hr><p style='color:grey; font-size:0.75em;'> Hosted on Acast. See <a style='color:grey;' target='_blank' rel='noopener noreferrer' href='https://acast.com/privacy'>acast.com/privacy</a> for more information.</p>]]></description>
 			<itunes:summary><![CDATA[PRISMATIC by Tiësto Episode 037<br>Tracklist:<br>00:00 - Intro<br>00:32 - 1 Flourish, Wolf Cutt - The Sign (Tiësto Remix)<br>03:06 - 2 S3PPA - Together<br>04:55 - 3 TESS - Light<br>08:31 - 4 LEFRIX - On Your Mind<br>11:38 - 5 CIS - He The Best<br>15:21 - 6 DJ GUESTLIST x Cleopard2000 - Special Touch<br>17:36 - 7 KIMMIC x Karen Overton - Your Loving Arms<br>20:56 - 8 John Dahlback x Luvstruck - Pyramid<br>23:08 - 9 Semblance Smile &amp; North Skies - Trying (Mostly Cloudy Fastlane Remix)<br>26:21 - 10 Lykke Li - I Follow Rivers (Addal Remix)<br>28:18 - 11 Carl Bee - Hits Like This (feat. Cari Golden)<br>32:04 - 12 Tommy Phillips - Sun is Shining (Lovelee Dae)<br>35:33 - 13 SWIM - Leaving On<br>38:51 - 14 Skyvol &amp; Monzilla - Vinyl Lover<br>42:49 - 15 Doppenberg &amp; Vaco feat. Alexandra Kessler - Always (Estaremos Aqui)<br>46:24 - 16 Push &amp; KAS:ST - Strange World<br>50:17 - 17 LAWTON, Trancemaster Krause &amp; Caroline Roxy - Horizon<br>53:41 - 18 Linds - Don't Stop It<br>54:46 - 19 Gravagerz - Self Aware<br>57:26 - 20 two girls one mom - Certified Floor Hitter<hr><p style='color:grey; font-size:0.75em;'> Hosted on Acast. See <a style='color:grey;' target='_blank' rel='noopener noreferrer' href='https://acast.com/privacy'>acast.com/privacy</a> for more information.</p>]]></itunes:summary>
-		</item>
-		<item>
-			<title>Episode 036</title>
-			<itunes:title>Episode 036</itunes:title>
-			<pubDate>Fri, 11 Sep 2026 14:00:00 GMT</pubDate>
-			<itunes:duration>1:00:08</itunes:duration>
-			<enclosure url="https://sphinx.acast.com/p/open/s/593eded1acfa040562f3480b/e/6aa29a93c939da2795424f70/media.mp3" length="57742733" type="audio/mpeg"/>
-			<guid isPermaLink="false">6aa29a93c939da2795424f70</guid>
-			<itunes:explicit>false</itunes:explicit>
-			<link>https://shows.acast.com/clublife-by-tiesto/episodes/episode-036</link>
-			<acast:episodeId>6aa29a93c939da2795424f70</acast:episodeId>
-			<acast:showId>593eded1acfa040562f3480b</acast:showId>
-			<acast:episodeUrl>episode-036</acast:episodeUrl>
-			<acast:settings><![CDATA[FYjHyZbXWHZ7gmX8Pp1rmRbkUlg2iR8fDtnl1O71B2N8B7jZZH+7YdsHlGFxMJ/JB5ewwSWwnDfITsERRlXnRPdjbJm7d4qQ2rUK1Oh2E65gYDhVAjVZ14DHwOhC8Pz9i+jargxr+Z+jVE9yJC778zhTQHU6gZEVV13nQX7pAdNB4u1MbNygBgy4VtStsTGZDTm4svZmzStw+pmjnI3CvMOlq6Lclh8sJpsGYBnLtR96Hua0odLUp4OBNJsgfTAUwHzSvq+z/P1gQRsyqjkdzS3lvgEtVq+4KYhnX5UsAlBDlnnqmbbBqg9UGVggxleDXXr2KC5g0ww5lA2OJtbGr77DDzURpG9P7EYBlCkAzfE=]]></acast:settings>
-			<itunes:subtitle>PRISMATIC by Tiësto Episode 036</itunes:subtitle>
-			<itunes:episodeType>full</itunes:episodeType>
-			<itunes:image href="https://assets.pippa.io/shows/593eded1acfa040562f3480b/1789041283787-31d4d181-e8bf-4f60-bd02-5e217d6bb145.jpeg"/>
-			<podcast:chapters url="https://lies0nic.github.io/lies0nic/episode-036-chapters.json" type="application/json+chapters"/>
-			<description><![CDATA[PRISMATIC by Tiësto Episode 036<br>Tracklist:<br>00:00 - Intro<br>00:32 - 1 Eli Brown - Damaged<br>02:24 - 2 Lumine - who tell em<br>05:31 - 3 GRIM - The More You Lie<br>08:44 - 4 Divasi - Go Undone<br>11:23 - 5 CIS - Where You Are Now<br>13:34 - 6 KETTAMA - Comes and Goes (Barqiemoon Remix)<br>17:00 - 7 Nedir Nadir - It's Not Over<br>20:00 - 8 Clouds - Savage Orbit<br>23:57 - 9 Bo Bensdorp - Ascension<br>26:45 - 10 Colyn &amp; Fahlberg - Closure<br>30:03 - 11 Kevin de Vries &amp; Platero - Man Like Me<br>31:49 - 12 Eric Prydz - Opus (Trashock Bootleg)<br>37:02 - 13 Tiësto - Love Comes Again (feat. BT) (Innēr Sense Remix)<br>41:13 - 14 DubVision - Tonight<br>42:40 - 15 Solarstone vs. Sirocco - Destination (Effen Remix)<br>47:21 - 16 Luminary - Amsterdam (Smith &amp; Pledger Mix)<br>51:04 - 17 dj try - Believe In More<br>53:20 - 18 RIVER - Vibe Regulator<br>55:43 - 19 CAIVA - Head In The Clouds<br>57:25 - 20 Tom Carroll - Empty Sky<hr><p style='color:grey; font-size:0.75em;'> Hosted on Acast. See <a style='color:grey;' target='_blank' rel='noopener noreferrer' href='https://acast.com/privacy'>acast.com/privacy</a> for more information.</p>]]></description>
-			<itunes:summary><![CDATA[PRISMATIC by Tiësto Episode 036<br>Tracklist:<br>00:00 - Intro<br>00:32 - 1 Eli Brown - Damaged<br>02:24 - 2 Lumine - who tell em<br>05:31 - 3 GRIM - The More You Lie<br>08:44 - 4 Divasi - Go Undone<br>11:23 - 5 CIS - Where You Are Now<br>13:34 - 6 KETTAMA - Comes and Goes (Barqiemoon Remix)<br>17:00 - 7 Nedir Nadir - It's Not Over<br>20:00 - 8 Clouds - Savage Orbit<br>23:57 - 9 Bo Bensdorp - Ascension<br>26:45 - 10 Colyn &amp; Fahlberg - Closure<br>30:03 - 11 Kevin de Vries &amp; Platero - Man Like Me<br>31:49 - 12 Eric Prydz - Opus (Trashock Bootleg)<br>37:02 - 13 Tiësto - Love Comes Again (feat. BT) (Innēr Sense Remix)<br>41:13 - 14 DubVision - Tonight<br>42:40 - 15 Solarstone vs. Sirocco - Destination (Effen Remix)<br>47:21 - 16 Luminary - Amsterdam (Smith &amp; Pledger Mix)<br>51:04 - 17 dj try - Believe In More<br>53:20 - 18 RIVER - Vibe Regulator<br>55:43 - 19 CAIVA - Head In The Clouds<br>57:25 - 20 Tom Carroll - Empty Sky<hr><p style='color:grey; font-size:0.75em;'> Hosted on Acast. See <a style='color:grey;' target='_blank' rel='noopener noreferrer' href='https://acast.com/privacy'>acast.com/privacy</a> for more information.</p>]]></itunes:summary>
-		</item>
-		<item>
-			<title>Episode 035</title>
-			<itunes:title>Episode 035</itunes:title>
-			<pubDate>Fri, 04 Sep 2026 14:00:00 GMT</pubDate>
-			<itunes:duration>1:00:20</itunes:duration>
-			<enclosure url="https://sphinx.acast.com/p/open/s/593eded1acfa040562f3480b/e/6a9588860305125c63466b19/media.mp3" length="57921201" type="audio/mpeg"/>
-			<guid isPermaLink="false">6a9588860305125c63466b19</guid>
-			<itunes:explicit>false</itunes:explicit>
-			<link>https://shows.acast.com/clublife-by-tiesto/episodes/episode-035</link>
-			<acast:episodeId>6a9588860305125c63466b19</acast:episodeId>
-			<acast:showId>593eded1acfa040562f3480b</acast:showId>
-			<acast:episodeUrl>episode-035</acast:episodeUrl>
-			<acast:settings><![CDATA[FYjHyZbXWHZ7gmX8Pp1rmRbkUlg2iR8fDtnl1O71B2N8B7jZZH+7YdsHlGFxMJ/JB5ewwSWwnDfITsERRlXnRPdjbJm7d4qQ2rUK1Oh2E65gYDhVAjVZ14DHwOhC8Pz9i+jargxr+Z+jVE9yJC778zhTQHU6gZEVV13nQX7pAdNB4u1MbNygBgy4VtStsTGZDTm4svZmzStw+pmjnI3CvMOlq6Lclh8sJpsGYBnLtR96Hua0odLUp4OBNJsgfTAUGbxH6FBkNMsYQpPfB7lsMJh3DhyHI/678JyjF6RLlT29lS4nZQ2K950YU2rDj4C0wpB6nflHX+5vzHcYWZS1sA2l0lDo5H9cJ2Cjl4i5Tm0=]]></acast:settings>
-			<itunes:subtitle>PRISMATIC by Tiësto Episode 035</itunes:subtitle>
-			<itunes:episodeType>full</itunes:episodeType>
-			<itunes:image href="https://assets.pippa.io/shows/593eded1acfa040562f3480b/1788184610453-6b8a4e7d-4d03-4236-8ab6-fe74dea68a78.jpeg"/>
-			<podcast:chapters url="https://lies0nic.github.io/lies0nic/episode-035-chapters.json" type="application/json+chapters"/>
-			<description><![CDATA[PRISMATIC by Tiësto Episode 035<br>Tracklist:<br>00:00 - Intro<br>00:32 - 1 KellAr, Paige Tomlinson - Take Me Back<br>03:27 - 2 KE-YEN - YOUR WHOLE LIFE IS JUST A DREAM<br>08:27 - 3 Benwal - CLOSER<br>11:10 - 4 Centre Court &amp; Wempe - EYANA<br>14:45 - 5 Lumine - who tell em<br>18:20 - 6 Pegassi - Ascension<br>20:40 - 7 EMMRSN - Love Takes Me Higher<br>22:41 - 8 Britney Speed - This is my house<br>24:56 - 9 Azzecca - back 2 u<br>26:58 - 10 Ejeca - Glyder<br>29:14 - 11 Aplexo, LUFS - Down<br>30:44 - 12 Nala - Warning<br>32:29 - 13 Atlantic Ocean, Desmond, Summum - Echoes From The 90s<br>35:54 - 14 BLR, Amber Revival - Autumn Leaves<br>40:45 - 15 Kayosa &amp; Tolland - Tell Me When Its Over<br>44:28 - 16 Maria Healy - Come Home<br>49:15 - 17 The Quest - Round Trip<br>52:39 - 18 Vincent de Moor - Flowtation (Dan Madams Booty)<br>55:31 - 19 macK &amp; Tom Carroll - Release Me<br>58:32 - 20 Cera Khin - I Don't Date Humans<hr><p style='color:grey; font-size:0.75em;'> Hosted on Acast. See <a style='color:grey;' target='_blank' rel='noopener noreferrer' href='https://acast.com/privacy'>acast.com/privacy</a> for more information.</p>]]></description>
-			<itunes:summary><![CDATA[PRISMATIC by Tiësto Episode 035<br>Tracklist:<br>00:00 - Intro<br>00:32 - 1 KellAr, Paige Tomlinson - Take Me Back<br>03:27 - 2 KE-YEN - YOUR WHOLE LIFE IS JUST A DREAM<br>08:27 - 3 Benwal - CLOSER<br>11:10 - 4 Centre Court &amp; Wempe - EYANA<br>14:45 - 5 Lumine - who tell em<br>18:20 - 6 Pegassi - Ascension<br>20:40 - 7 EMMRSN - Love Takes Me Higher<br>22:41 - 8 Britney Speed - This is my house<br>24:56 - 9 Azzecca - back 2 u<br>26:58 - 10 Ejeca - Glyder<br>29:14 - 11 Aplexo, LUFS - Down<br>30:44 - 12 Nala - Warning<br>32:29 - 13 Atlantic Ocean, Desmond, Summum - Echoes From The 90s<br>35:54 - 14 BLR, Amber Revival - Autumn Leaves<br>40:45 - 15 Kayosa &amp; Tolland - Tell Me When Its Over<br>44:28 - 16 Maria Healy - Come Home<br>49:15 - 17 The Quest - Round Trip<br>52:39 - 18 Vincent de Moor - Flowtation (Dan Madams Booty)<br>55:31 - 19 macK &amp; Tom Carroll - Release Me<br>58:32 - 20 Cera Khin - I Don't Date Humans<hr><p style='color:grey; font-size:0.75em;'> Hosted on Acast. See <a style='color:grey;' target='_blank' rel='noopener noreferrer' href='https://acast.com/privacy'>acast.com/privacy</a> for more information.</p>]]></itunes:summary>
-		</item>
-		<item>
-			<title>Episode 034</title>
-			<itunes:title>Episode 034</itunes:title>
-			<pubDate>Fri, 28 Aug 2026 14:00:00 GMT</pubDate>
-			<itunes:duration>1:00:02</itunes:duration>
-			<enclosure url="https://sphinx.acast.com/p/open/s/593eded1acfa040562f3480b/e/6a8c50c46d62278f8382d108/media.mp3" length="57642840" type="audio/mpeg"/>
-			<guid isPermaLink="false">6a8c50c46d62278f8382d108</guid>
-			<itunes:explicit>false</itunes:explicit>
-			<link>https://shows.acast.com/clublife-by-tiesto/episodes/episode-034</link>
-			<acast:episodeId>6a8c50c46d62278f8382d108</acast:episodeId>
-			<acast:showId>593eded1acfa040562f3480b</acast:showId>
-			<acast:episodeUrl>episode-034</acast:episodeUrl>
-			<acast:settings><![CDATA[FYjHyZbXWHZ7gmX8Pp1rmRbkUlg2iR8fDtnl1O71B2N8B7jZZH+7YdsHlGFxMJ/JB5ewwSWwnDfITsERRlXnRPdjbJm7d4qQ2rUK1Oh2E65gYDhVAjVZ14DHwOhC8Pz9i+jargxr+Z+jVE9yJC778zhTQHU6gZEVV13nQX7pAdNB4u1MbNygBgy4VtStsTGZDTm4svZmzStw+pmjnI3CvMOlq6Lclh8sJpsGYBnLtR96Hua0odLUp4OBNJsgfTAUaduZpGbfobZ4viJvdzcV6/o8Fmn8S78UYtD5aqPrgS2wnel2ApXeJWyvdAL7D8QL0Y9HuLAsc7im3TRWKEesu/uQ58d4yf1S6gUseIJr3BY=]]></acast:settings>
-			<itunes:subtitle>PRISMATIC by Tiësto Episode 034</itunes:subtitle>
-			<itunes:episodeType>full</itunes:episodeType>
-			<itunes:image href="https://assets.pippa.io/shows/593eded1acfa040562f3480b/1787580590027-eeafcc7b-cd89-4d0d-a44c-14a307d552c6.jpeg"/>
-			<podcast:chapters url="https://lies0nic.github.io/lies0nic/episode-034-chapters.json" type="application/json+chapters"/>
-			<description><![CDATA[PRISMATIC by Tiësto Episode 034<br>Tracklist:<br>00:00 - Intro<br>00:32 - 1 Amy Wiles - Way That You Look At Me<br>03:15 - 2 SILK x Emie x JIUZ - DAYDREAM (HIT THE WAVE)<br>05:03 - 3 DJ Heartstring  - Another Year Alone<br>08:38 - 4 DEVERAUX - You Got Me Acting Crazy<br>13:16 - 5 Karl Mac - Poison<br>16:47 - 6 CIS - He The Best<br>18:46 - 7 Saxon - Feel The Melody<br>20:35 - 8 FROM ORBIT - Son of a Gun<br>22:52 - 9 RISTO - Only One<br>25:58 - 10 Nala - Cigarette<br>29:53 - 11 Devault - What I Came For<br>31:35 - 12 SØNIN &amp; Leon Bolier - Sirocco<br>36:22 - 13 Swedish House Mafia, Lykke Li - Happiness Is So Sad (Mark Roma Remix)<br>38:45 - 14 TITVS - Shala River<br>40:37 - 15 Olly James and Caroline Roxy - Trance, Acid, Techno<br>43:27 - 16 VERA - Trapped<br>45:37 - 17 Kenya Grace - Strangers (Pegassi Remix)<br>50:57 - 18 KUKO - Voicemail (Tiësto Remix)<br>54:29 - 19 DJ Sonnenbrand - Reverie<br>57:37 - 20 STORM - Backline<hr><p style='color:grey; font-size:0.75em;'> Hosted on Acast. See <a style='color:grey;' target='_blank' rel='noopener noreferrer' href='https://acast.com/privacy'>acast.com/privacy</a> for more information.</p>]]></description>
-			<itunes:summary><![CDATA[PRISMATIC by Tiësto Episode 034<br>Tracklist:<br>00:00 - Intro<br>00:32 - 1 Amy Wiles - Way That You Look At Me<br>03:15 - 2 SILK x Emie x JIUZ - DAYDREAM (HIT THE WAVE)<br>05:03 - 3 DJ Heartstring  - Another Year Alone<br>08:38 - 4 DEVERAUX - You Got Me Acting Crazy<br>13:16 - 5 Karl Mac - Poison<br>16:47 - 6 CIS - He The Best<br>18:46 - 7 Saxon - Feel The Melody<br>20:35 - 8 FROM ORBIT - Son of a Gun<br>22:52 - 9 RISTO - Only One<br>25:58 - 10 Nala - Cigarette<br>29:53 - 11 Devault - What I Came For<br>31:35 - 12 SØNIN &amp; Leon Bolier - Sirocco<br>36:22 - 13 Swedish House Mafia, Lykke Li - Happiness Is So Sad (Mark Roma Remix)<br>38:45 - 14 TITVS - Shala River<br>40:37 - 15 Olly James and Caroline Roxy - Trance, Acid, Techno<br>43:27 - 16 VERA - Trapped<br>45:37 - 17 Kenya Grace - Strangers (Pegassi Remix)<br>50:57 - 18 KUKO - Voicemail (Tiësto Remix)<br>54:29 - 19 DJ Sonnenbrand - Reverie<br>57:37 - 20 STORM - Backline<hr><p style='color:grey; font-size:0.75em;'> Hosted on Acast. See <a style='color:grey;' target='_blank' rel='noopener noreferrer' href='https://acast.com/privacy'>acast.com/privacy</a> for more information.</p>]]></itunes:summary>
-		</item>
-		<item>
-			<title>Episode 033</title>
-			<itunes:title>Episode 033</itunes:title>
-			<pubDate>Fri, 21 Aug 2026 14:00:00 GMT</pubDate>
-			<itunes:duration>1:00:40</itunes:duration>
-			<enclosure url="https://sphinx.acast.com/p/open/s/593eded1acfa040562f3480b/e/6a830d45c2cc087689de4732/media.mp3" length="58252225" type="audio/mpeg"/>
-			<guid isPermaLink="false">6a830d45c2cc087689de4732</guid>
-			<itunes:explicit>false</itunes:explicit>
-			<link>https://shows.acast.com/clublife-by-tiesto/episodes/episode-033</link>
-			<acast:episodeId>6a830d45c2cc087689de4732</acast:episodeId>
-			<acast:showId>593eded1acfa040562f3480b</acast:showId>
-			<acast:episodeUrl>episode-033</acast:episodeUrl>
-			<acast:settings><![CDATA[FYjHyZbXWHZ7gmX8Pp1rmRbkUlg2iR8fDtnl1O71B2N8B7jZZH+7YdsHlGFxMJ/JB5ewwSWwnDfITsERRlXnRPdjbJm7d4qQ2rUK1Oh2E65gYDhVAjVZ14DHwOhC8Pz9i+jargxr+Z+jVE9yJC778zhTQHU6gZEVV13nQX7pAdNB4u1MbNygBgy4VtStsTGZDTm4svZmzStw+pmjnI3CvMOlq6Lclh8sJpsGYBnLtR96Hua0odLUp4OBNJsgfTAU5bmAntuSai63QDht5oOhX7bYJCX9gJmFda1nMrLQcIt8hwkdBwt2xFUz8UhFZL15PXlI1RsuNDTPglmt+g4tnIKjGbv6bG/UP50R+QO1rGY=]]></acast:settings>
-			<itunes:subtitle>PRISMATIC by Tiësto Episode 033</itunes:subtitle>
-			<itunes:episodeType>full</itunes:episodeType>
-			<itunes:image href="https://assets.pippa.io/shows/593eded1acfa040562f3480b/1786973449551-af04b3f8-26ea-455f-a6f8-64d88c49af2c.jpeg"/>
-			<podcast:chapters url="https://lies0nic.github.io/lies0nic/episode-033-chapters.json" type="application/json+chapters"/>
-			<description><![CDATA[PRISMATIC by Tiësto Episode 033<br>Tracklist:<br>00:00 - Intro<br>00:32 - 1 Lumine - Here For Us<br>03:29 - 2 DOREY - Close My Eyes<br>06:28 - 3 Chicane - Saltwater (Mirage Remix)<br>10:28 - 4 S3PPA - Inner Peace<br>13:11 - 5 HEADHIGH x K.ONE - GO<br>15:27 - 6 Jose Amnesia - The Eternal (CIElll Remix)<br>17:57 - 7 LIZA, No Chasa - On A Cloud<br>19:45 - 8 Faster Horses x Vivace - There's Nothing Else<br>22:47 - 9 No Chasa, Sekta, Jimmy Gilmartin - Let You Go<br>26:42 - 10 Meduza &amp; Kevin De Vries - 7 DAYS<br>30:36 - 11 It's Murph, Kate Morgan - Forever Young<br>34:19 - 12 MAUR - Waiting For<br>38:41 - 13 Loods, KETTAMA - Feels Like Heaven (feat. Camden Cox)<br>41:50 - 14 Centre Court, Ken Spieker - Back To Life<br>44:09 - 15 Ben Gold - Diving Faces<br>47:01 - 16 Gareth Emery, Annabel, djtry - Under The Sky (Broken Tides)<br>48:34 - 17 Giuseppe Ottaviani feat. Diana Goldberg - Hold On<br>51:19 - 18 SUPERSTRINGS - Balearic Temptation<br>53:31 - 19 CJ Bolland - The Prophet (Mark Sixma Edit)<br>58:30 - 20 Davey Asprey x MDDLTN &amp; Tai Woffinden - Fallout<hr><p style='color:grey; font-size:0.75em;'> Hosted on Acast. See <a style='color:grey;' target='_blank' rel='noopener noreferrer' href='https://acast.com/privacy'>acast.com/privacy</a> for more information.</p>]]></description>
-			<itunes:summary><![CDATA[PRISMATIC by Tiësto Episode 033<br>Tracklist:<br>00:00 - Intro<br>00:32 - 1 Lumine - Here For Us<br>03:29 - 2 DOREY - Close My Eyes<br>06:28 - 3 Chicane - Saltwater (Mirage Remix)<br>10:28 - 4 S3PPA - Inner Peace<br>13:11 - 5 HEADHIGH x K.ONE - GO<br>15:27 - 6 Jose Amnesia - The Eternal (CIElll Remix)<br>17:57 - 7 LIZA, No Chasa - On A Cloud<br>19:45 - 8 Faster Horses x Vivace - There's Nothing Else<br>22:47 - 9 No Chasa, Sekta, Jimmy Gilmartin - Let You Go<br>26:42 - 10 Meduza &amp; Kevin De Vries - 7 DAYS<br>30:36 - 11 It's Murph, Kate Morgan - Forever Young<br>34:19 - 12 MAUR - Waiting For<br>38:41 - 13 Loods, KETTAMA - Feels Like Heaven (feat. Camden Cox)<br>41:50 - 14 Centre Court, Ken Spieker - Back To Life<br>44:09 - 15 Ben Gold - Diving Faces<br>47:01 - 16 Gareth Emery, Annabel, djtry - Under The Sky (Broken Tides)<br>48:34 - 17 Giuseppe Ottaviani feat. Diana Goldberg - Hold On<br>51:19 - 18 SUPERSTRINGS - Balearic Temptation<br>53:31 - 19 CJ Bolland - The Prophet (Mark Sixma Edit)<br>58:30 - 20 Davey Asprey x MDDLTN &amp; Tai Woffinden - Fallout<hr><p style='color:grey; font-size:0.75em;'> Hosted on Acast. See <a style='color:grey;' target='_blank' rel='noopener noreferrer' href='https://acast.com/privacy'>acast.com/privacy</a> for more information.</p>]]></itunes:summary>
 		</item>
     	<itunes:category text="Music"/>
     </channel>
