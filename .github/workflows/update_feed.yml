@@ -16,10 +16,20 @@ on:
 
 permissions:
   contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
 
 jobs:
   update-feed:
     runs-on: ubuntu-latest
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
       - name: Checkout repository
@@ -28,12 +38,10 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v7
         with:
-          python-version: '3.14'
+          python-version: '3'
 
       - name: Run update script
-        run: |
-          FORCE_FLAG="${{ inputs.force && '--force' || '' }}"
-          python scripts/update_feed.py $FORCE_FLAG
+        run: python scripts/update_feed.py ${{ inputs.force && '--force' || '' }}
 
       - name: Check for changes and commit
         run: |
@@ -42,8 +50,24 @@ jobs:
             git config --local user.name "github-actions[bot]"
             git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
             git add -A
-            git commit -m "chore(feed): auto-update RSS feed & chapters [skip ci]"
+            git commit -m "chore(feed): auto-update RSS feed & chapters"
             git push
           else
             echo "No changes detected. Feed is up to date."
           fi
+
+      - name: Stage published files
+        run: |
+          mkdir -p _site
+          cp feed.xml episode-*-chapters.json _site/
+          echo "Published content:"
+          ls -la _site
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: _site
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5
