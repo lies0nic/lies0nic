@@ -8,16 +8,15 @@ based on tracklists from the YouTube playlist RSS feed.
 """
 
 import argparse
+import contextlib
 import html
-import io
 import json
 import os
 import re
 import sys
 import urllib.request
 import xml.etree.ElementTree as ET
-from datetime import datetime
-from typing import Any, Dict, List, Optional, Tuple
+from typing import Any
 
 PARENT_ACAST_FEED_URL = "https://feeds.acast.com/public/shows/593eded1acfa040562f3480b"
 YOUTUBE_PLAYLIST_FEED_URL = "https://www.youtube.com/feeds/videos.xml?playlist_id=PLAxy1YpvZDdUoia97oMCW2VQRHXsVbz_A"
@@ -61,15 +60,15 @@ def parse_time_to_seconds(t_str: str) -> int:
     return 0
 
 
-def format_track_time(track: Dict) -> str:
+def format_track_time(track: dict) -> str:
     """Format track time string for display (e.g. '00:32')."""
-    if "timeStr" in track and track["timeStr"]:
+    if track.get("timeStr"):
         return track["timeStr"]
     sec = track.get("startTime", 0)
     return f"{sec // 60:02d}:{sec % 60:02d}"
 
 
-def parse_duration_to_seconds(d_str: Optional[str]) -> int:
+def parse_duration_to_seconds(d_str: str | None) -> int:
     """Parse duration string from itunes:duration into integer seconds."""
     if not d_str:
         return 3600
@@ -82,7 +81,7 @@ def parse_duration_to_seconds(d_str: Optional[str]) -> int:
         return 3600
 
 
-def extract_episode_number(title: str) -> Optional[int]:
+def extract_episode_number(title: str) -> int | None:
     """Extract episode number from title string (e.g. 'Episode 037' -> 37, 'PRISMATIC by Tiësto 037' -> 37)."""
     m = re.search(r'(?:Episode\s*|#|\b0*)(\d+)\b', title, re.IGNORECASE)
     if m:
@@ -93,7 +92,7 @@ def extract_episode_number(title: str) -> Optional[int]:
     return None
 
 
-def parse_tracklist_from_description(desc: str) -> List[Dict[str, Any]]:
+def parse_tracklist_from_description(desc: str) -> list[dict[str, Any]]:
     """
     Parse tracklist lines from YouTube video description.
     Handles formats like:
@@ -117,7 +116,7 @@ def parse_tracklist_from_description(desc: str) -> List[Dict[str, Any]]:
     return tracks
 
 
-def fetch_youtube_episodes(playlist_feed_url: str = YOUTUBE_PLAYLIST_FEED_URL) -> Dict[int, Dict]:
+def fetch_youtube_episodes(playlist_feed_url: str = YOUTUBE_PLAYLIST_FEED_URL) -> dict[int, dict]:
     """Fetch and parse YouTube playlist RSS feed for episode tracklists."""
     print(f"Fetching YouTube playlist feed: {playlist_feed_url}")
     xml_data = fetch_url(playlist_feed_url)
@@ -150,7 +149,7 @@ def fetch_youtube_episodes(playlist_feed_url: str = YOUTUBE_PLAYLIST_FEED_URL) -
     return episodes
 
 
-def generate_json_chapters(tracks: List[Dict], output_file: str, force: bool = False) -> bool:
+def generate_json_chapters(tracks: list[dict], output_file: str, force: bool = False) -> bool:
     """Generate Podcast Index JSON chapters file. Returns True if written."""
     data = {
         "version": "1.2.0",
@@ -210,12 +209,12 @@ def clean_feed_files(
     return changed
 
 
-def format_tracklist_html(tracks: List[Dict[str, Any]]) -> str:
+def format_tracklist_html(tracks: list[dict[str, Any]]) -> str:
     """Render a compact tracklist snippet for an episode description."""
     if not tracks:
         return ""
 
-    parts: List[str] = []
+    parts: list[str] = []
     for track in tracks:
         time_text = format_track_time(track)
         title = str(track.get('title', '')).strip()
@@ -230,7 +229,7 @@ def format_tracklist_html(tracks: List[Dict[str, Any]]) -> str:
     return '<br>'.join(parts)
 
 
-def build_enriched_description(raw_description: str, tracks: List[Dict[str, Any]]) -> str:
+def build_enriched_description(raw_description: str, tracks: list[dict[str, Any]]) -> str:
     """Append tracklist details to the existing description while preserving the Acast footer."""
     tracklist_html = format_tracklist_html(tracks)
     if not tracklist_html:
@@ -248,8 +247,8 @@ def build_enriched_description(raw_description: str, tracks: List[Dict[str, Any]
 
 def add_chapters_to_source_xml(
     source_xml: str,
-    chapter_urls_by_episode: Dict[int, str],
-    chapter_tracks_by_episode: Optional[Dict[int, List[Dict[str, Any]]]] = None,
+    chapter_urls_by_episode: dict[int, str],
+    chapter_tracks_by_episode: dict[int, list[dict[str, Any]]] | None = None,
 ) -> str:
     """Add chapter references while preserving every other byte of the source XML."""
     newline = '\r\n' if '\r\n' in source_xml else '\n'
@@ -362,8 +361,8 @@ def update_feed(
     print(f"Found {len(parent_items)} items in parent feed.")
     
     yt_episodes = fetch_youtube_episodes()
-    chapter_urls_by_episode: Dict[int, str] = {}
-    chapter_tracks_by_episode: Dict[int, List[Dict[str, Any]]] = {}
+    chapter_urls_by_episode: dict[int, str] = {}
+    chapter_tracks_by_episode: dict[int, list[dict[str, Any]]] = {}
     retained_chapter_filenames: set[str] = set()
     changes_made = False
     
@@ -437,7 +436,7 @@ def update_feed(
     return True
 
 
-def auto_detect_feed_path() -> Tuple[str, str]:
+def auto_detect_feed_path() -> tuple[str, str]:
     """Auto-detect feed.xml and chapters output directory."""
     candidates = [
         os.path.join(os.getcwd(), "feed.xml"),
@@ -456,11 +455,9 @@ def auto_detect_feed_path() -> Tuple[str, str]:
 
 def main():
     if sys.stdout.encoding != 'utf-8':
-        try:
+        with contextlib.suppress(AttributeError, OSError):
             sys.stdout.reconfigure(encoding='utf-8')
-        except Exception:
-            pass
-            
+
     parser = argparse.ArgumentParser(description="Update PRISMATIC podcast feed & chapters from parent feed & YouTube.")
     parser.add_argument("--feed-xml", "-f", help="Path to local feed.xml file")
     parser.add_argument("--chapters-dir", "-c", help="Directory to save .json chapters")
