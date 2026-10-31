@@ -4,7 +4,7 @@ update_feed.py - Automatic RSS feed & JSON chapters updater for PRISMATIC (lies0
 
 Produces a feed strictly ISO to the parent Acast podcast feed, enriched with Podcast Index
 chapters (<podcast:chapters>) and generates JSON chapter files (.json) for each episode
-based on tracklists from the YouTube playlist RSS feed.
+based on tracklists from the YouTube playlist and each episode's watch page data.
 """
 
 import argparse
@@ -19,7 +19,7 @@ import xml.etree.ElementTree as ET
 from typing import Any
 
 PARENT_ACAST_FEED_URL = "https://feeds.acast.com/public/shows/593eded1acfa040562f3480b"
-YOUTUBE_PLAYLIST_FEED_URL = "https://www.youtube.com/feeds/videos.xml?playlist_id=PLAxy1YpvZDdUoia97oMCW2VQRHXsVbz_A"
+YOUTUBE_PLAYLIST_ID = "PLAxy1YpvZDdUoia97oMCW2VQRHXsVbz_A"
 DEFAULT_CHAPTERS_BASE_URL = "https://lies0nic.github.io/lies0nic/"
 
 # Public "WEB" client credentials shipped in every browser, not secrets.
@@ -127,52 +127,8 @@ def parse_tracklist_from_description(desc: str) -> list[dict[str, Any]]:
     return tracks
 
 
-def fetch_youtube_episodes(playlist_feed_url: str = YOUTUBE_PLAYLIST_FEED_URL) -> dict[int, dict]:
-    """Fetch and parse YouTube playlist RSS feed for episode tracklists."""
-    print(f"Fetching YouTube playlist feed: {playlist_feed_url}")
-    xml_data = fetch_url(playlist_feed_url)
-    root = ET.fromstring(xml_data)
-    
-    ns = {
-        'atom': NAMESPACES['atom'],
-        'media': NAMESPACES['media'],
-        'yt': NAMESPACES['yt'],
-    }
-    
-    episodes = {}
-    for entry in root.findall('atom:entry', ns):
-        title_el = entry.find('atom:title', ns)
-        title = title_el.text if title_el is not None and title_el.text else ""
-        
-        desc_el = entry.find('media:group/media:description', ns)
-        desc = desc_el.text if desc_el is not None and desc_el.text else ""
-        
-        video_id_el = entry.find('yt:videoId', ns)
-        video_id = video_id_el.text if video_id_el is not None and video_id_el.text else ""
-
-        ep_num = extract_episode_number(title)
-        if ep_num is not None:
-            tracks = parse_tracklist_from_description(desc)
-            episodes[ep_num] = {
-                "title": title,
-                "description": desc,
-                "video_id": video_id,
-                "tracks": tracks,
-            }
-    
-    print(f"Parsed {len(episodes)} episodes from YouTube playlist: {sorted(episodes.keys())}")
-    return episodes
-
-
-def is_chapter_frame(url: str) -> bool:
-    """True for a real per-chapter frame, not the episode's single video thumbnail."""
-    return "hqdefault_" in url
-
-
-def fetch_chapter_frames(video_id: str) -> list[dict[str, Any]]:
-    """Return [{ms, img}] for each chapter YouTube exposes, best effort."""
-    if not video_id:
-        return []
+def youtube_api(endpoint: str, payload: dict[str, Any]) -> dict[str, Any]:
+    """POST to the InnerTube endpoint the YouTube web app itself calls."""
     body = {
         "context": {"client": {
             "clientName": "WEB",
@@ -180,10 +136,10 @@ def fetch_chapter_frames(video_id: str) -> list[dict[str, Any]]:
             "hl": "en",
             "gl": "US",
         }},
-        "videoId": video_id,
+        **payload,
     }
     req = urllib.request.Request(
-        f"https://www.youtube.com/youtubei/v1/next?key={YOUTUBE_INNERTUBE_KEY}",
+        f"https://www.youtube.com/youtubei/v1/{endpoint}?key={YOUTUBE_INNERTUBE_KEY}",
         data=json.dumps(body).encode(),
         headers={
             "Content-Type": "application/json",
@@ -192,36 +148,80 @@ def fetch_chapter_frames(video_id: str) -> list[dict[str, Any]]:
             "X-Youtube-Client-Version": YOUTUBE_CLIENT_VERSION,
         },
     )
+    with urllib.request.urlopen(req, timeout=30) as resp:
+        return json.loads(resp.read())
+
+
+def walk_json(node: Any, key: str):
+    """Yield every value stored under `key`, wherever it sits in the tree."""
+    if isinstance(node, dict):
+        if key in node:
+            yield node[key]
+        for value in node.values():
+            yield from walk_json(value, key)
+    elif isinstance(node, list):
+        for value in node:
+            yield from walk_json(value, key)
+
+
+def fetch_playlist_episodes() -> dict[int, dict]:
+    """Episodes of the playlist: {number: {title, video_id}} from the playlist listing."""
+    print(f"Fetching YouTube playlist: {YOUTUBE_PLAYLIST_ID}")
+    root = youtube_api("browse", {"browseId": "VL" + YOUTUBE_PLAYLIST_ID})
+
+    episodes = {}
+    for lockup in walk_json(root, "lockupViewModel"):
+        video_id = lockup.get("contentId", "")
+        title = (
+            lockup.get("metadata", {})
+            .get("lockupMetadataViewModel", {})
+            .get("title", {})
+            .get("content", "")
+        )
+        ep_num = extract_episode_number(title)
+        if ep_num is not None and video_id:
+            episodes[ep_num] = {"title": title, "video_id": video_id}
+
+    print(f"Parsed {len(episodes)} episodes from YouTube playlist: {sorted(episodes.keys())}")
+    return episodes
+
+
+def fetch_watch_data(video_id: str) -> dict[str, Any]:
+    """Description and per-chapter image URLs from the watch page data, best effort."""
+    if not video_id:
+        return {"description": "", "frames": []}
     try:
-        with urllib.request.urlopen(req, timeout=30) as resp:
-            data = json.loads(resp.read())
-    except Exception as exc:  # noqa: BLE001 - no image is not a feed failure
-        print(f"  Warning: chapter frames unavailable for {video_id}: {type(exc).__name__}")
-        return []
+        root = youtube_api("next", {"videoId": video_id})
+    except Exception as exc:  # noqa: BLE001 - keep published chapters when YouTube is mute
+        print(f"  Warning: watch data unavailable for {video_id}: {type(exc).__name__}")
+        return {"description": "", "frames": []}
 
-    frames: list[dict[str, Any]] = []
+    description = ""
+    for info in walk_json(root, "videoSecondaryInfoRenderer"):
+        description = info.get("attributedDescription", {}).get("content", "")
+        if not description:
+            runs = info.get("description", {}).get("runs", [])
+            description = "".join(run.get("text", "") for run in runs)
+        if description:
+            break
 
-    def walk(node):
-        if isinstance(node, dict):
-            if "chapterRenderer" in node:
-                renderer = node["chapterRenderer"]
-                thumbs = renderer.get("thumbnail", {}).get("thumbnails", [])
-                url = thumbs[-1]["url"] if thumbs else ""
-                if is_chapter_frame(url):
-                    frames.append({"ms": renderer["timeRangeStartMillis"], "img": url})
-            for value in node.values():
-                walk(value)
-        elif isinstance(node, list):
-            for value in node:
-                walk(value)
+    frames = []
+    for renderer in walk_json(root, "chapterRenderer"):
+        thumbs = renderer.get("thumbnail", {}).get("thumbnails", [])
+        url = thumbs[-1]["url"] if thumbs else ""
+        if is_chapter_frame(url):
+            frames.append({"ms": renderer["timeRangeStartMillis"], "img": url})
 
-    walk(data)
-    return frames
+    return {"description": description, "frames": frames}
 
 
-def fetch_chapter_images(video_id: str, tracks: list[dict[str, Any]]) -> list[str | None]:
+def is_chapter_frame(url: str) -> bool:
+    """True for a real per-chapter frame, not the episode's single video thumbnail."""
+    return "hqdefault_" in url
+
+
+def match_chapter_images(tracks: list[dict[str, Any]], frames: list[dict[str, Any]]) -> list[str | None]:
     """One image URL per track, matched to the closest chapter start time."""
-    frames = fetch_chapter_frames(video_id)
     used: set[int] = set()
     images: list[str | None] = []
     for track in tracks:
@@ -240,20 +240,16 @@ def fetch_chapter_images(video_id: str, tracks: list[dict[str, Any]]) -> list[st
     return images
 
 
-def read_existing_images(json_path: str) -> dict[int, str]:
-    """Map startTime -> img from an already published chapters file."""
+def read_existing_chapters(json_path: str) -> list[dict[str, Any]]:
+    """Already published chapters, used as fallback when YouTube is unreachable."""
     if not os.path.exists(json_path):
-        return {}
+        return []
     try:
         with open(json_path, 'r', encoding='utf-8') as f:
             data = json.load(f)
     except (OSError, json.JSONDecodeError):
-        return {}
-    return {
-        chapter["startTime"]: chapter["img"]
-        for chapter in data.get("chapters", [])
-        if chapter.get("img")
-    }
+        return []
+    return data.get("chapters", [])
 
 
 def chapter_image_is_alive(url: str) -> bool:
@@ -467,7 +463,8 @@ def update_feed(
     """
     Main update logic:
     1. Fetches parent Acast feed (the authoritative source for episodes & metadata).
-    2. Fetches YouTube playlist feed for tracklists & chapters.
+    2. Fetches the YouTube playlist, then each episode's watch data for tracklists,
+       chapters and per-chapter image URLs.
     3. Keeps feed ISO to parent feed, with exactly the parent feed's items and metadata.
     4. Adds <podcast:chapters> tag and generates .json chapter files for each episode.
     5. Removes files that are no longer represented in the current feed.
@@ -486,7 +483,7 @@ def update_feed(
     parent_items = parent_channel.findall('item')
     print(f"Found {len(parent_items)} items in parent feed.")
     
-    yt_episodes = fetch_youtube_episodes()
+    yt_episodes = fetch_playlist_episodes()
     chapter_urls_by_episode: dict[int, str] = {}
     chapter_tracks_by_episode: dict[int, list[dict[str, Any]]] = {}
     retained_chapter_filenames: set[str] = set()
@@ -499,33 +496,37 @@ def update_feed(
         ep_num = extract_episode_number(title)
         
         if ep_num is not None and ep_num in yt_episodes:
-            yt_data = yt_episodes[ep_num]
-            tracks = yt_data["tracks"]
-            
-            if tracks:
-                json_filename = f"episode-{ep_num:03d}-chapters.json"
-                json_path = os.path.join(chapters_dir, json_filename)
-                retained_chapter_filenames.add(json_filename)
-                
-                if not dry_run:
-                    # Signed URLs are refreshed only when a canary probe fails, so runs
-                    # stay idempotent while an expiring signature is still detected.
-                    known = read_existing_images(json_path)
-                    images = [known.get(track["startTime"]) for track in tracks]
-                    canary = next((image for image in images if image), "")
-                    if force or not all(images) or not chapter_image_is_alive(canary):
-                        fetched = fetch_chapter_images(yt_data.get("video_id", ""), tracks)
-                        images = [new or old for new, old in zip(fetched, images)]
+            json_filename = f"episode-{ep_num:03d}-chapters.json"
+            json_path = os.path.join(chapters_dir, json_filename)
+            known = read_existing_chapters(json_path)
 
-                    json_written = generate_json_chapters(tracks, json_path, images, force=force)
-                    if json_written:
-                        changes_made = True
-                    print(f"  {sum(1 for image in images if image)}/{len(tracks)} chapter images")
-                
-                chapter_url = f"{base_chapters_url.rstrip('/')}/{json_filename}"
-                chapter_urls_by_episode[ep_num] = chapter_url
-                chapter_tracks_by_episode[ep_num] = tracks
-                print(f"Prepared <podcast:chapters> tag for {title}")
+            watch_data = fetch_watch_data(yt_episodes[ep_num]["video_id"])
+            tracks = parse_tracklist_from_description(watch_data["description"]) or known
+            if not tracks:
+                print(f"  No tracklist for {title}, skipping chapters")
+                continue
+
+            retained_chapter_filenames.add(json_filename)
+
+            if not dry_run:
+                # Keep a published URL as long as it answers, so a run doesn't churn
+                # every signature; a dead one means the batch expired and is refetched.
+                images = match_chapter_images(tracks, watch_data["frames"])
+                known_images = {chapter["startTime"]: chapter.get("img") for chapter in known}
+                images = [new or known_images.get(track["startTime"]) for track, new in zip(tracks, images)]
+                canary = next((image for image in images if image), "")
+                if known_images and all(images) and chapter_image_is_alive(canary):
+                    images = [known_images.get(track["startTime"]) for track in tracks]
+
+                json_written = generate_json_chapters(tracks, json_path, images, force=force)
+                if json_written:
+                    changes_made = True
+                print(f"  {sum(1 for image in images if image)}/{len(tracks)} chapter images")
+
+            chapter_url = f"{base_chapters_url.rstrip('/')}/{json_filename}"
+            chapter_urls_by_episode[ep_num] = chapter_url
+            chapter_tracks_by_episode[ep_num] = tracks
+            print(f"Prepared <podcast:chapters> tag for {title}")
 
     if clean_feed_files(
         chapters_dir,
