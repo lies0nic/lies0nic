@@ -19,9 +19,9 @@ import xml.etree.ElementTree as ET
 from typing import Any
 
 PARENT_ACAST_FEED_URL = "https://feeds.acast.com/public/shows/593eded1acfa040562f3480b"
-YOUTUBE_PLAYLIST_ID = "PLAxy1YpvZDdUoia97oMCW2VQRHXsVbz_A"
-DEFAULT_CHAPTERS_BASE_URL = "https://lies0nic.github.io/lies0nic/"
+DEFAULT_FEED_BASE_URL = "https://lies0nic.github.io/lies0nic/"
 
+YOUTUBE_PLAYLIST_ID = "PLAxy1YpvZDdUoia97oMCW2VQRHXsVbz_A"
 # Public "WEB" client credentials shipped in every browser, not secrets.
 # Chapter images only exist as signed, per-chapter URLs in the watch page data:
 # they can be fetched, never built (signed and pinned to an exact millisecond).
@@ -31,6 +31,7 @@ YOUTUBE_USER_AGENT = (
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
     "(KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36"
 )
+
 CHAPTER_MATCH_TOLERANCE = 1.5  # seconds
 
 NAMESPACES = {
@@ -371,9 +372,41 @@ def add_chapters_to_source_xml(
     source_xml: str,
     chapter_urls_by_episode: dict[int, str],
     chapter_tracks_by_episode: dict[int, list[dict[str, Any]]] | None = None,
+    feed_base_url: str = DEFAULT_FEED_BASE_URL,
 ) -> str:
     """Add chapter references while preserving every other byte of the source XML."""
     newline = '\r\n' if '\r\n' in source_xml else '\n'
+    feed_url = feed_base_url.rstrip('/') + '/feed.xml'
+
+    # The source feed's self reference and new-feed-url point clients at the origin
+    # host, so podcast apps migrate away and lose the enriched descriptions. The
+    # inherited values stay, commented out, above ours.
+    def repoint(match: re.Match[str], attribute: str | None = None) -> str:
+        indent, tag = match.group(1), match.group(2)
+        if attribute:
+            if f'{attribute}="{feed_url}"' in tag:
+                return match.group(0)
+            fixed = re.sub(rf'{attribute}="[^"]*"', f'{attribute}="{feed_url}"', tag)
+        else:
+            if f'>{feed_url}<' in tag:
+                return match.group(0)
+            fixed = re.sub(r'>.*?<', f'>{feed_url}<', tag, count=1, flags=re.DOTALL)
+        return f'{indent}<!-- {tag} -->{newline}{indent}{fixed}{newline}'
+
+    source_xml = re.sub(
+        r'^([ \t]*)(<atom:link\b[^>]*\brel="self"[^>]*>)[ \t]*(?:\r?\n)?',
+        lambda m: repoint(m, 'href'),
+        source_xml,
+        count=1,
+        flags=re.MULTILINE,
+    )
+    source_xml = re.sub(
+        r'^([ \t]*)(<itunes:new-feed-url>.*?</itunes:new-feed-url>)[ \t]*(?:\r?\n)?',
+        repoint,
+        source_xml,
+        count=1,
+        flags=re.MULTILINE | re.DOTALL,
+    )
     if 'xmlns:podcast=' not in source_xml:
         source_xml = re.sub(
             r'(<rss\b[^>]*)(>)',
@@ -456,7 +489,7 @@ def add_chapters_to_source_xml(
 def update_feed(
     feed_path: str,
     chapters_dir: str,
-    base_chapters_url: str = DEFAULT_CHAPTERS_BASE_URL,
+    feed_base_url: str = DEFAULT_FEED_BASE_URL,
     force: bool = False,
     dry_run: bool = False,
 ) -> bool:
@@ -523,7 +556,7 @@ def update_feed(
                     changes_made = True
                 print(f"  {sum(1 for image in images if image)}/{len(tracks)} chapter images")
 
-            chapter_url = f"{base_chapters_url.rstrip('/')}/{json_filename}"
+            chapter_url = f"{feed_base_url.rstrip('/')}/{json_filename}"
             chapter_urls_by_episode[ep_num] = chapter_url
             chapter_tracks_by_episode[ep_num] = tracks
             print(f"Prepared <podcast:chapters> tag for {title}")
@@ -548,7 +581,12 @@ def update_feed(
             changes_made = True
 
     source_xml = parent_xml.decode('utf-8')
-    output_xml = add_chapters_to_source_xml(source_xml, chapter_urls_by_episode, chapter_tracks_by_episode)
+    output_xml = add_chapters_to_source_xml(
+        source_xml,
+        chapter_urls_by_episode,
+        chapter_tracks_by_episode,
+        feed_base_url=feed_base_url,
+    )
     
     # Check if feed.xml on disk is different
     current_xml = ""
@@ -597,8 +635,8 @@ def main():
 
     parser = argparse.ArgumentParser(description="Update PRISMATIC podcast feed & chapters from parent feed & YouTube.")
     parser.add_argument("--feed-xml", "-f", help="Path to local feed.xml file")
+    parser.add_argument("--base-url", "-u", default=DEFAULT_FEED_BASE_URL, help="Base URL for feed.xml and its chapters")
     parser.add_argument("--chapters-dir", "-c", help="Directory to save .json chapters")
-    parser.add_argument("--base-url", "-u", default=DEFAULT_CHAPTERS_BASE_URL, help="Base URL for chapters in feed.xml")
     parser.add_argument("--force", action="store_true", help="Force update feed and chapter files")
     parser.add_argument("--dry-run", action="store_true", help="Simulate run without writing files")
     
@@ -615,15 +653,15 @@ def main():
         chapters_dir = os.path.dirname(os.path.abspath(feed_path))
         
     print(f"Target Feed XML: {feed_path}")
+    print(f"Base feed URL: {args.base_url}")
     print(f"Chapters Directory: {chapters_dir}")
-    print(f"Base Chapters URL: {args.base_url}")
     print(f"Dry Run: {args.dry_run}")
     print(f"Force: {args.force}\n")
     
     updated = update_feed(
         feed_path=feed_path,
         chapters_dir=chapters_dir,
-        base_chapters_url=args.base_url,
+        feed_base_url=args.base_url,
         force=args.force,
         dry_run=args.dry_run,
     )
