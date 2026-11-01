@@ -512,7 +512,7 @@ def update_feed(
                 # Keep a published URL as long as it answers, so a run doesn't churn
                 # every signature; a dead one means the batch expired and is refetched.
                 images = match_chapter_images(tracks, watch_data["frames"])
-                known_images = {chapter["startTime"]: chapter.get("img") for chapter in known}
+                known_images = {chapter["startTime"]: chapter["img"] for chapter in known if chapter.get("img")}
                 images = [new or known_images.get(track["startTime"]) for track, new in zip(tracks, images)]
                 canary = next((image for image in images if image), "")
                 if known_images and all(images) and chapter_image_is_alive(canary):
