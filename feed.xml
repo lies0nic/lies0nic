@@ -7,7 +7,8 @@
 		<generator>acast.com</generator>
 		<title>PRISMATIC</title>
 		<link>http://www.tiesto.com</link>
-		<atom:link href="https://feeds.acast.com/public/shows/593eded1acfa040562f3480b" rel="self" type="application/rss+xml"/>
+		<!-- <atom:link href="https://feeds.acast.com/public/shows/593eded1acfa040562f3480b" rel="self" type="application/rss+xml"/> -->
+		<atom:link href="https://lies0nic.github.io/lies0nic/feed.xml" rel="self" type="application/rss+xml"/>
 		<language>en</language>
 		<copyright>Tiësto</copyright>
 		<itunes:keywords>tiesto, clublife, dance, edm, dj</itunes:keywords>
@@ -33,7 +34,8 @@
 				<link>http://www.tiesto.com</link>
 				<title>PRISMATIC</title>
 			</image>
-			<itunes:new-feed-url>https://feeds.acast.com/public/shows/593eded1acfa040562f3480b</itunes:new-feed-url>
+			<!-- <itunes:new-feed-url>https://feeds.acast.com/public/shows/593eded1acfa040562f3480b</itunes:new-feed-url> -->
+			<itunes:new-feed-url>https://lies0nic.github.io/lies0nic/feed.xml</itunes:new-feed-url>
 		<item>
 			<title>Episode 043</title>
 			<itunes:title>Episode 043</itunes:title>
