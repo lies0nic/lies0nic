@@ -96,12 +96,7 @@ def parse_duration_to_seconds(d_str: str | None) -> int:
 def extract_episode_number(title: str) -> int | None:
     """Extract episode number from title string (e.g. 'Episode 037' -> 37, 'PRISMATIC by Tiësto 037' -> 37)."""
     m = re.search(r'(?:Episode\s*|#|\b0*)(\d+)\b', title, re.IGNORECASE)
-    if m:
-        try:
-            return int(m.group(1))
-        except ValueError:
-            pass
-    return None
+    return int(m.group(1)) if m else None
 
 
 def parse_tracklist_from_description(desc: str) -> list[dict[str, Any]]:
@@ -265,6 +260,22 @@ def chapter_image_is_alive(url: str) -> bool:
         return False
 
 
+def write_if_changed(
+    path: str,
+    content: str,
+    force: bool = False,
+    newline: str | None = None,
+) -> bool:
+    """Write content unless the file already holds it exactly. Returns True if written."""
+    if not force and os.path.exists(path):
+        with open(path, 'r', encoding='utf-8') as f:
+            if f.read() == content:
+                return False
+    with open(path, 'w', encoding='utf-8', newline=newline) as f:
+        f.write(content)
+    return True
+
+
 def generate_json_chapters(
     tracks: list[dict],
     output_file: str,
@@ -285,12 +296,8 @@ def generate_json_chapters(
         ]
     }
     new_content = json.dumps(data, indent=2, ensure_ascii=False) + '\n'
-    if os.path.exists(output_file) and not force:
-        with open(output_file, 'r', encoding='utf-8') as f:
-            if f.read() == new_content:
-                return False
-    with open(output_file, 'w', encoding='utf-8') as f:
-        f.write(new_content)
+    if not write_if_changed(output_file, new_content, force=force):
+        return False
     print(f"Generated JSON chapters: {output_file}")
     return True
 
@@ -303,23 +310,16 @@ def clean_feed_files(
 ) -> bool:
     """Clean unretained files from the feed directory."""
     changed = False
-    chapter_file_pattern = re.compile(r'^episode-\d+-chapters\.json$')
+    chapter_file_pattern = re.compile(r'episode-\d+-chapters\.json')
 
     for filename in os.listdir(chapters_dir):
         chapter_path = os.path.join(chapters_dir, filename)
-        is_feed_asset = os.path.splitext(filename)[1].lower() in {'.json', '.xml'}
-        if (
-            filename in retained_filenames
-            or os.path.isdir(chapter_path)
-            or (
-                not clean_feed_assets
-                and not chapter_file_pattern.match(filename)
-            )
-            or (
-                clean_feed_assets
-                and not is_feed_asset
-            )
-        ):
+        if filename in retained_filenames or os.path.isdir(chapter_path):
+            continue
+        if clean_feed_assets:
+            if os.path.splitext(filename)[1].lower() not in {'.json', '.xml'}:
+                continue
+        elif not chapter_file_pattern.fullmatch(filename):
             continue
 
         if dry_run:
@@ -334,21 +334,11 @@ def clean_feed_files(
 
 def format_tracklist_html(tracks: list[dict[str, Any]]) -> str:
     """Render a compact tracklist snippet for an episode description."""
-    if not tracks:
-        return ""
-
-    parts: list[str] = []
+    parts = []
     for track in tracks:
-        time_text = format_track_time(track)
-        title = str(track.get('title', '')).strip()
-        if not title:
-            continue
-        title = html.escape(title, quote=False)
-        if time_text:
-            parts.append(f'{html.escape(time_text, quote=False)} - {title}')
-        else:
-            parts.append(title)
-
+        title = html.escape(str(track.get('title', '')).strip(), quote=False)
+        if title:
+            parts.append(f'{format_track_time(track)} - {title}')
     return '<br>'.join(parts)
 
 
@@ -432,30 +422,21 @@ def add_chapters_to_source_xml(
 
         if tracks:
             def replace_value(tag_name: str) -> str:
-                tag_pattern = re.compile(
-                    rf'(<{tag_name}\b[^>]*>\s*)<!\[CDATA\[(.*?)\]\]>(\s*</{tag_name}>)',
+                pattern = re.compile(
+                    rf'(<{tag_name}\b[^>]*>\s*)(?:<!\[CDATA\[(.*?)\]\]>|(.*?))(\s*</{tag_name}>)',
                     re.DOTALL | re.IGNORECASE,
                 )
-                match_tag = tag_pattern.search(item_xml)
-                if match_tag:
-                    current_value = match_tag.group(2)
-                    new_value = build_enriched_description(current_value, tracks)
-                    return item_xml[:match_tag.start()] + (
-                        f'{match_tag.group(1)}<![CDATA[{new_value}]]>{match_tag.group(3)}'
-                    ) + item_xml[match_tag.end():]
 
-                generic_pattern = re.compile(
-                    rf'(<{tag_name}\b[^>]*>)(.*?)(</{tag_name}>)',
-                    re.DOTALL | re.IGNORECASE,
-                )
-                match_tag = generic_pattern.search(item_xml)
-                if match_tag:
-                    current_value = match_tag.group(2)
-                    new_value = build_enriched_description(current_value, tracks)
-                    return item_xml[:match_tag.start()] + (
-                        f'{match_tag.group(1)}{new_value}{match_tag.group(3)}'
-                    ) + item_xml[match_tag.end():]
-                return item_xml
+                def rebuild(tag_match: re.Match[str]) -> str:
+                    cdata, plain = tag_match.group(2), tag_match.group(3)
+                    value = build_enriched_description(
+                        cdata if cdata is not None else plain, tracks
+                    )
+                    if cdata is None:
+                        return f'{tag_match.group(1)}{value}{tag_match.group(4)}'
+                    return f'{tag_match.group(1)}<![CDATA[{value}]]>{tag_match.group(4)}'
+
+                return pattern.sub(rebuild, item_xml, count=1)
 
             item_xml = replace_value('description')
             item_xml = replace_value('itunes:summary')
@@ -603,9 +584,7 @@ def update_feed(
         
     if dry_run:
         print(f"\n[DRY RUN] Would write updated ISO feed to {feed_path}")
-    else:
-        with open(feed_path, 'w', encoding='utf-8', newline='') as f:
-            f.write(output_xml)
+    elif write_if_changed(feed_path, output_xml, force=True, newline=''):
         print(f"\nSuccessfully saved updated ISO feed to: {feed_path}")
         
     return True
@@ -613,17 +592,14 @@ def update_feed(
 
 def auto_detect_feed_path() -> tuple[str, str]:
     """Auto-detect feed.xml and chapters output directory."""
-    candidates = [
-        os.path.join(os.getcwd(), "feed.xml"),
-        os.path.join(os.getcwd(), "lies0nic", "feed.xml"),
-        os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "feed.xml"),
-        os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "lies0nic", "feed.xml"),
-    ]
-    for p in candidates:
-        if os.path.exists(p):
-            feed_file = os.path.abspath(p)
-            return feed_file, os.path.dirname(feed_file)
-            
+    here = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    for base in (os.getcwd(), here):
+        for relative in ("feed.xml", os.path.join("lies0nic", "feed.xml")):
+            path = os.path.join(base, relative)
+            if os.path.exists(path):
+                feed_file = os.path.abspath(path)
+                return feed_file, os.path.dirname(feed_file)
+
     feed_file = os.path.abspath("feed.xml")
     return feed_file, os.path.dirname(feed_file)
 
@@ -643,14 +619,11 @@ def main():
     args = parser.parse_args()
     
     feed_path = args.feed_xml
-    chapters_dir = args.chapters_dir
-    
-    if not feed_path:
+    if feed_path:
+        chapters_dir = args.chapters_dir or os.path.dirname(os.path.abspath(feed_path))
+    else:
         feed_path, detected_dir = auto_detect_feed_path()
-        if not chapters_dir:
-            chapters_dir = detected_dir
-    elif not chapters_dir:
-        chapters_dir = os.path.dirname(os.path.abspath(feed_path))
+        chapters_dir = args.chapters_dir or detected_dir
         
     print(f"Target Feed XML: {feed_path}")
     print(f"Base feed URL: {args.base_url}")
