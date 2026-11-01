@@ -28,21 +28,20 @@ YOUTUBE_PLAYLIST_ID = "PLAxy1YpvZDdUoia97oMCW2VQRHXsVbz_A"
 YOUTUBE_INNERTUBE_KEY = "AIzaSyAO_FJ2SlqU8Q4STEHLGCilw_Y9_11qcW8"
 YOUTUBE_CLIENT_VERSION = "2.20261029.11.00"
 YOUTUBE_USER_AGENT = (
-    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
-    "(KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36"
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36"
 )
 
 CHAPTER_MATCH_TOLERANCE = 1.5  # seconds
 
 NAMESPACES = {
-    'atom': 'http://www.w3.org/2005/Atom',
-    'googleplay': 'http://www.google.com/schemas/play-podcasts/1.0',
-    'itunes': 'http://www.itunes.com/dtds/podcast-1.0.dtd',
-    'media': 'http://search.yahoo.com/mrss/',
-    'podaccess': 'https://access.acast.com/schema/1.0/',
-    'acast': 'https://schema.acast.com/1.0/',
-    'podcast': 'https://podcastindex.org/namespace/1.0',
-    'yt': 'http://www.youtube.com/xml/schemas/2015',
+    "atom": "http://www.w3.org/2005/Atom",
+    "googleplay": "http://www.google.com/schemas/play-podcasts/1.0",
+    "itunes": "http://www.itunes.com/dtds/podcast-1.0.dtd",
+    "media": "http://search.yahoo.com/mrss/",
+    "podaccess": "https://access.acast.com/schema/1.0/",
+    "acast": "https://schema.acast.com/1.0/",
+    "podcast": "https://podcastindex.org/namespace/1.0",
+    "yt": "http://www.youtube.com/xml/schemas/2015",
 }
 
 for prefix, uri in NAMESPACES.items():
@@ -64,7 +63,7 @@ def fetch_url(url: str) -> bytes:
 
 def parse_time_to_seconds(t_str: str) -> int:
     """Parse timecode string (hh:mm:ss or mm:ss) into integer seconds."""
-    parts = list(map(int, t_str.strip().split(':')))
+    parts = list(map(int, t_str.strip().split(":")))
     if len(parts) == 2:
         return parts[0] * 60 + parts[1]
     elif len(parts) == 3:
@@ -85,7 +84,7 @@ def parse_duration_to_seconds(d_str: str | None) -> int:
     if not d_str:
         return 3600
     d_str = d_str.strip()
-    if ':' in d_str:
+    if ":" in d_str:
         return parse_time_to_seconds(d_str)
     try:
         return int(float(d_str))
@@ -95,7 +94,7 @@ def parse_duration_to_seconds(d_str: str | None) -> int:
 
 def extract_episode_number(title: str) -> int | None:
     """Extract episode number from title string (e.g. 'Episode 037' -> 37, 'PRISMATIC by Tiësto 037' -> 37)."""
-    m = re.search(r'(?:Episode\s*|#|\b0*)(\d+)\b', title, re.IGNORECASE)
+    m = re.search(r"(?:Episode\s*|#|\b0*)(\d+)\b", title, re.IGNORECASE)
     return int(m.group(1)) if m else None
 
 
@@ -108,30 +107,28 @@ def parse_tracklist_from_description(desc: str) -> list[dict[str, Any]]:
       00:32 1 Artist - Title
     """
     tracks = []
-    lines = desc.split('\n')
+    lines = desc.split("\n")
     for line in lines:
         line = line.strip()
-        m = re.match(r'^(?:\[?(\d{1,2}:\d{2}(?::\d{2})?)\]?)\s*(.+)$', line)
+        m = re.match(r"^(?:\[?(\d{1,2}:\d{2}(?::\d{2})?)\]?)\s*(.+)$", line)
         if m:
             time_str, track_title = m.groups()
             sec = parse_time_to_seconds(time_str)
-            tracks.append({
-                "startTime": sec,
-                "timeStr": time_str,
-                "title": track_title.strip()
-            })
+            tracks.append({"startTime": sec, "timeStr": time_str, "title": track_title.strip()})
     return tracks
 
 
 def youtube_api(endpoint: str, payload: dict[str, Any]) -> dict[str, Any]:
     """POST to the InnerTube endpoint the YouTube web app itself calls."""
     body = {
-        "context": {"client": {
-            "clientName": "WEB",
-            "clientVersion": YOUTUBE_CLIENT_VERSION,
-            "hl": "en",
-            "gl": "US",
-        }},
+        "context": {
+            "client": {
+                "clientName": "WEB",
+                "clientVersion": YOUTUBE_CLIENT_VERSION,
+                "hl": "en",
+                "gl": "US",
+            }
+        },
         **payload,
     }
     req = urllib.request.Request(
@@ -168,12 +165,7 @@ def fetch_playlist_episodes() -> dict[int, dict]:
     episodes = {}
     for lockup in walk_json(root, "lockupViewModel"):
         video_id = lockup.get("contentId", "")
-        title = (
-            lockup.get("metadata", {})
-            .get("lockupMetadataViewModel", {})
-            .get("title", {})
-            .get("content", "")
-        )
+        title = lockup.get("metadata", {}).get("lockupMetadataViewModel", {}).get("title", {}).get("content", "")
         ep_num = extract_episode_number(title)
         if ep_num is not None and video_id:
             episodes[ep_num] = {"title": title, "video_id": video_id}
@@ -241,7 +233,7 @@ def read_existing_chapters(json_path: str) -> list[dict[str, Any]]:
     if not os.path.exists(json_path):
         return []
     try:
-        with open(json_path, 'r', encoding='utf-8') as f:
+        with open(json_path, "r", encoding="utf-8") as f:
             data = json.load(f)
     except (OSError, json.JSONDecodeError):
         return []
@@ -253,7 +245,7 @@ def chapter_image_is_alive(url: str) -> bool:
     if not url:
         return False
     try:
-        req = urllib.request.Request(url, method='HEAD', headers={"User-Agent": YOUTUBE_USER_AGENT})
+        req = urllib.request.Request(url, method="HEAD", headers={"User-Agent": YOUTUBE_USER_AGENT})
         with urllib.request.urlopen(req, timeout=15) as resp:
             return resp.status == 200
     except Exception:  # noqa: BLE001 - unreachable means "refresh"
@@ -268,10 +260,10 @@ def write_if_changed(
 ) -> bool:
     """Write content unless the file already holds it exactly. Returns True if written."""
     if not force and os.path.exists(path):
-        with open(path, 'r', encoding='utf-8') as f:
+        with open(path, "r", encoding="utf-8") as f:
             if f.read() == content:
                 return False
-    with open(path, 'w', encoding='utf-8', newline=newline) as f:
+    with open(path, "w", encoding="utf-8", newline=newline) as f:
         f.write(content)
     return True
 
@@ -293,9 +285,9 @@ def generate_json_chapters(
                 **({"img": image} if image else {}),
             }
             for t, image in zip(tracks, images)
-        ]
+        ],
     }
-    new_content = json.dumps(data, indent=2, ensure_ascii=False) + '\n'
+    new_content = json.dumps(data, indent=2, ensure_ascii=False) + "\n"
     if not write_if_changed(output_file, new_content, force=force):
         return False
     print(f"Generated JSON chapters: {output_file}")
@@ -310,14 +302,14 @@ def clean_feed_files(
 ) -> bool:
     """Clean unretained files from the feed directory."""
     changed = False
-    chapter_file_pattern = re.compile(r'episode-\d+-chapters\.json')
+    chapter_file_pattern = re.compile(r"episode-\d+-chapters\.json")
 
     for filename in os.listdir(chapters_dir):
         chapter_path = os.path.join(chapters_dir, filename)
         if filename in retained_filenames or os.path.isdir(chapter_path):
             continue
         if clean_feed_assets:
-            if os.path.splitext(filename)[1].lower() not in {'.json', '.xml'}:
+            if os.path.splitext(filename)[1].lower() not in {".json", ".xml"}:
                 continue
         elif not chapter_file_pattern.fullmatch(filename):
             continue
@@ -336,10 +328,10 @@ def format_tracklist_html(tracks: list[dict[str, Any]]) -> str:
     """Render a compact tracklist snippet for an episode description."""
     parts = []
     for track in tracks:
-        title = html.escape(str(track.get('title', '')).strip(), quote=False)
+        title = html.escape(str(track.get("title", "")).strip(), quote=False)
         if title:
-            parts.append(f'{format_track_time(track)} - {title}')
-    return '<br>'.join(parts)
+            parts.append(f"{format_track_time(track)} - {title}")
+    return "<br>".join(parts)
 
 
 def build_enriched_description(raw_description: str, tracks: list[dict[str, Any]]) -> str:
@@ -348,14 +340,14 @@ def build_enriched_description(raw_description: str, tracks: list[dict[str, Any]
     if not tracklist_html:
         return raw_description
 
-    if '<hr>' in raw_description:
-        intro, footer = raw_description.split('<hr>', 1)
-        footer = '<hr>' + footer
+    if "<hr>" in raw_description:
+        intro, footer = raw_description.split("<hr>", 1)
+        footer = "<hr>" + footer
     else:
         intro = raw_description
-        footer = ''
+        footer = ""
 
-    return f'{intro}<br>Tracklist:<br>{tracklist_html}{footer}'
+    return f"{intro}<br>Tracklist:<br>{tracklist_html}{footer}"
 
 
 def add_chapters_to_source_xml(
@@ -365,8 +357,8 @@ def add_chapters_to_source_xml(
     feed_base_url: str = DEFAULT_FEED_BASE_URL,
 ) -> str:
     """Add chapter references while preserving every other byte of the source XML."""
-    newline = '\r\n' if '\r\n' in source_xml else '\n'
-    feed_url = feed_base_url.rstrip('/') + '/feed.xml'
+    newline = "\r\n" if "\r\n" in source_xml else "\n"
+    feed_url = feed_base_url.rstrip("/") + "/feed.xml"
 
     # The source feed's self reference and new-feed-url point clients at the origin
     # host, so podcast apps migrate away and lose the enriched descriptions. The
@@ -378,82 +370,79 @@ def add_chapters_to_source_xml(
                 return match.group(0)
             fixed = re.sub(rf'{attribute}="[^"]*"', f'{attribute}="{feed_url}"', tag)
         else:
-            if f'>{feed_url}<' in tag:
+            if f">{feed_url}<" in tag:
                 return match.group(0)
-            fixed = re.sub(r'>.*?<', f'>{feed_url}<', tag, count=1, flags=re.DOTALL)
-        return f'{indent}<!-- {tag} -->{newline}{indent}{fixed}{newline}'
+            fixed = re.sub(r">.*?<", f">{feed_url}<", tag, count=1, flags=re.DOTALL)
+        return f"{indent}<!-- {tag} -->{newline}{indent}{fixed}{newline}"
 
     source_xml = re.sub(
         r'^([ \t]*)(<atom:link\b[^>]*\brel="self"[^>]*>)[ \t]*(?:\r?\n)?',
-        lambda m: repoint(m, 'href'),
+        lambda m: repoint(m, "href"),
         source_xml,
         count=1,
         flags=re.MULTILINE,
     )
     source_xml = re.sub(
-        r'^([ \t]*)(<itunes:new-feed-url>.*?</itunes:new-feed-url>)[ \t]*(?:\r?\n)?',
+        r"^([ \t]*)(<itunes:new-feed-url>.*?</itunes:new-feed-url>)[ \t]*(?:\r?\n)?",
         repoint,
         source_xml,
         count=1,
         flags=re.MULTILINE | re.DOTALL,
     )
-    if 'xmlns:podcast=' not in source_xml:
+    if "xmlns:podcast=" not in source_xml:
         source_xml = re.sub(
-            r'(<rss\b[^>]*)(>)',
+            r"(<rss\b[^>]*)(>)",
             rf'\1 xmlns:podcast="{NAMESPACES["podcast"]}"\2',
             source_xml,
             count=1,
         )
 
     chapter_tracks_by_episode = chapter_tracks_by_episode or {}
-    item_pattern = re.compile(r'(<item\b[^>]*>.*?</item\s*>)', re.DOTALL | re.IGNORECASE)
+    item_pattern = re.compile(r"(<item\b[^>]*>.*?</item\s*>)", re.DOTALL | re.IGNORECASE)
     chapter_pattern = re.compile(
-        r'^[ \t]*<podcast:chapters\b[^>]*/>[ \t]*(?:\r?\n)?',
+        r"^[ \t]*<podcast:chapters\b[^>]*/>[ \t]*(?:\r?\n)?",
         re.MULTILINE,
     )
 
     def enrich_item(match: re.Match[str]) -> str:
         item_xml = match.group(1)
-        title_match = re.search(r'<title\b[^>]*>(.*?)</title\s*>', item_xml, re.DOTALL | re.IGNORECASE)
-        title = re.sub(r'<[^>]+>', '', title_match.group(1)).strip() if title_match else ''
+        title_match = re.search(r"<title\b[^>]*>(.*?)</title\s*>", item_xml, re.DOTALL | re.IGNORECASE)
+        title = re.sub(r"<[^>]+>", "", title_match.group(1)).strip() if title_match else ""
         episode_number = extract_episode_number(title)
         chapter_url = chapter_urls_by_episode.get(episode_number) if episode_number is not None else None
         tracks = chapter_tracks_by_episode.get(episode_number, []) if episode_number is not None else []
 
         if tracks:
+
             def replace_value(tag_name: str) -> str:
                 pattern = re.compile(
-                    rf'(<{tag_name}\b[^>]*>\s*)(?:<!\[CDATA\[(.*?)\]\]>|(.*?))(\s*</{tag_name}>)',
+                    rf"(<{tag_name}\b[^>]*>\s*)(?:<!\[CDATA\[(.*?)\]\]>|(.*?))(\s*</{tag_name}>)",
                     re.DOTALL | re.IGNORECASE,
                 )
 
                 def rebuild(tag_match: re.Match[str]) -> str:
                     cdata, plain = tag_match.group(2), tag_match.group(3)
-                    value = build_enriched_description(
-                        cdata if cdata is not None else plain, tracks
-                    )
+                    value = build_enriched_description(cdata if cdata is not None else plain, tracks)
                     if cdata is None:
-                        return f'{tag_match.group(1)}{value}{tag_match.group(4)}'
-                    return f'{tag_match.group(1)}<![CDATA[{value}]]>{tag_match.group(4)}'
+                        return f"{tag_match.group(1)}{value}{tag_match.group(4)}"
+                    return f"{tag_match.group(1)}<![CDATA[{value}]]>{tag_match.group(4)}"
 
                 return pattern.sub(rebuild, item_xml, count=1)
 
-            item_xml = replace_value('description')
-            item_xml = replace_value('itunes:summary')
+            item_xml = replace_value("description")
+            item_xml = replace_value("itunes:summary")
 
         if not chapter_url:
             return item_xml
 
-        chapter_line = (
-            f'<podcast:chapters url="{chapter_url}" type="application/json+chapters"/>'
-        )
+        chapter_line = f'<podcast:chapters url="{chapter_url}" type="application/json+chapters"/>'
         existing = chapter_pattern.search(item_xml)
         if existing:
-            indentation = re.match(r'[ \t]*', existing.group(0)).group(0)
-            return item_xml[:existing.start()] + f'{indentation}{chapter_line}{newline}' + item_xml[existing.end():]
+            indentation = re.match(r"[ \t]*", existing.group(0)).group(0)
+            return item_xml[: existing.start()] + f"{indentation}{chapter_line}{newline}" + item_xml[existing.end() :]
 
         description_match = re.search(
-            r'(?m)^([ \t]*)(<description\b)',
+            r"(?m)^([ \t]*)(<description\b)",
             item_xml,
             re.IGNORECASE,
         )
@@ -462,7 +451,7 @@ def add_chapters_to_source_xml(
 
         line_start = description_match.start()
         line_indent = description_match.group(1)
-        return item_xml[:line_start] + f'{line_indent}{chapter_line}{newline}' + item_xml[line_start:]
+        return item_xml[:line_start] + f"{line_indent}{chapter_line}{newline}" + item_xml[line_start:]
 
     return item_pattern.sub(enrich_item, source_xml)
 
@@ -485,30 +474,30 @@ def update_feed(
     6. Writes feed.xml if changes were made.
     """
     os.makedirs(chapters_dir, exist_ok=True)
-    
+
     print(f"Fetching parent Acast feed: {PARENT_ACAST_FEED_URL}")
     parent_xml = fetch_url(PARENT_ACAST_FEED_URL)
     parent_root = ET.fromstring(parent_xml)
-    parent_channel = parent_root.find('./channel')
+    parent_channel = parent_root.find("./channel")
     if parent_channel is None:
         print("Error: parent feed has no <channel> element.")
         return False
-        
-    parent_items = parent_channel.findall('item')
+
+    parent_items = parent_channel.findall("item")
     print(f"Found {len(parent_items)} items in parent feed.")
-    
+
     yt_episodes = fetch_playlist_episodes()
     chapter_urls_by_episode: dict[int, str] = {}
     chapter_tracks_by_episode: dict[int, list[dict[str, Any]]] = {}
     retained_chapter_filenames: set[str] = set()
     changes_made = False
-    
+
     # Process each item in parent feed
     for item in parent_items:
-        title_el = item.find('title')
+        title_el = item.find("title")
         title = title_el.text.strip() if title_el is not None and title_el.text else ""
         ep_num = extract_episode_number(title)
-        
+
         if ep_num is not None and ep_num in yt_episodes:
             json_filename = f"episode-{ep_num:03d}-chapters.json"
             json_path = os.path.join(chapters_dir, json_filename)
@@ -561,32 +550,32 @@ def update_feed(
         ):
             changes_made = True
 
-    source_xml = parent_xml.decode('utf-8')
+    source_xml = parent_xml.decode("utf-8")
     output_xml = add_chapters_to_source_xml(
         source_xml,
         chapter_urls_by_episode,
         chapter_tracks_by_episode,
         feed_base_url=feed_base_url,
     )
-    
+
     # Check if feed.xml on disk is different
     current_xml = ""
     if os.path.exists(feed_path):
-        with open(feed_path, 'r', encoding='utf-8', newline='') as f:
+        with open(feed_path, "r", encoding="utf-8", newline="") as f:
             current_xml = f.read()
-            
+
     if current_xml != output_xml:
         changes_made = True
-        
+
     if not changes_made and not force:
         print("\nFeed and chapter files are already up-to-date and ISO to parent feed. No changes needed.")
         return False
-        
+
     if dry_run:
         print(f"\n[DRY RUN] Would write updated ISO feed to {feed_path}")
-    elif write_if_changed(feed_path, output_xml, force=True, newline=''):
+    elif write_if_changed(feed_path, output_xml, force=True, newline=""):
         print(f"\nSuccessfully saved updated ISO feed to: {feed_path}")
-        
+
     return True
 
 
@@ -605,32 +594,34 @@ def auto_detect_feed_path() -> tuple[str, str]:
 
 
 def main():
-    if sys.stdout.encoding != 'utf-8':
+    if sys.stdout.encoding != "utf-8":
         with contextlib.suppress(AttributeError, OSError):
-            sys.stdout.reconfigure(encoding='utf-8')
+            sys.stdout.reconfigure(encoding="utf-8")
 
     parser = argparse.ArgumentParser(description="Update PRISMATIC podcast feed & chapters from parent feed & YouTube.")
     parser.add_argument("--feed-xml", "-f", help="Path to local feed.xml file")
-    parser.add_argument("--base-url", "-u", default=DEFAULT_FEED_BASE_URL, help="Base URL for feed.xml and its chapters")
+    parser.add_argument(
+        "--base-url", "-u", default=DEFAULT_FEED_BASE_URL, help="Base URL for feed.xml and its chapters"
+    )
     parser.add_argument("--chapters-dir", "-c", help="Directory to save .json chapters")
     parser.add_argument("--force", action="store_true", help="Force update feed and chapter files")
     parser.add_argument("--dry-run", action="store_true", help="Simulate run without writing files")
-    
+
     args = parser.parse_args()
-    
+
     feed_path = args.feed_xml
     if feed_path:
         chapters_dir = args.chapters_dir or os.path.dirname(os.path.abspath(feed_path))
     else:
         feed_path, detected_dir = auto_detect_feed_path()
         chapters_dir = args.chapters_dir or detected_dir
-        
+
     print(f"Target Feed XML: {feed_path}")
     print(f"Base feed URL: {args.base_url}")
     print(f"Chapters Directory: {chapters_dir}")
     print(f"Dry Run: {args.dry_run}")
     print(f"Force: {args.force}\n")
-    
+
     updated = update_feed(
         feed_path=feed_path,
         chapters_dir=chapters_dir,
@@ -638,7 +629,7 @@ def main():
         force=args.force,
         dry_run=args.dry_run,
     )
-    
+
     if updated:
         print("\n[SUCCESS] ISO Feed and chapters updated successfully.")
     else:
